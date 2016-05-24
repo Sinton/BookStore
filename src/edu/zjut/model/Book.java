@@ -2,60 +2,157 @@ package edu.zjut.model;
 
 public class Book {
 
-	private int bookId;
-	private String salt;
-	private String password;
-	private String registerDate;
-	private String profileId;
+	private String bookId;
+	private String name;
+	private String author;
+	private double price;
+	private double currPrice;
+	private double discount;
+	private String publishing;
+	private String publishTime;
+	private int edition;
+	private int pageNum;
+	private int wordNum;
+	private String printTime;
+	private int booksize;
+	private String paper;
+	private Category category;
+	private String imgUrlBig;
+	private String imgUrlSmall;
 
-	public Book() {
-	}
-
-	public Book(int uid, String salt, String password, String registerDate, String profileId) {
-		setUid(uid);
-		setSalt(salt);
-		setPassword(password);
-		setRegisterDate(registerDate);
-		setProfileId(profileId);
-	}
-
-	public int getUid() {
+	public String getBookId() {
 		return bookId;
 	}
 
-	public String getSalt() {
-		return salt;
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getName() {
+		return name;
 	}
 
-	public String getRegisterDate() {
-		return registerDate;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getProfileId() {
-		return profileId;
+	public String getAuthor() {
+		return author;
 	}
 
-	private void setUid(int uid) {
-		this.bookId = uid;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	private void setSalt(String salt) {
-		this.salt = salt;
+	public double getPrice() {
+		return price;
 	}
 
-	private void setPassword(String password) {
-		this.password = password;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	private void setRegisterDate(String registerDate) {
-		this.registerDate = registerDate;
+	public double getCurrPrice() {
+		return currPrice;
 	}
 
-	private void setProfileId(String profileId) {
-		this.profileId = profileId;
+	public void setCurrPrice(double currPrice) {
+		this.currPrice = currPrice;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public String getPublishing() {
+		return publishing;
+	}
+
+	public void setPublishing(String publishing) {
+		this.publishing = publishing;
+	}
+
+	public String getPublishTime() {
+		return publishTime;
+	}
+
+	public void setPublishTime(String publishTime) {
+		this.publishTime = publishTime;
+	}
+
+	public int getEdition() {
+		return edition;
+	}
+
+	public void setEdition(int edition) {
+		this.edition = edition;
+	}
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getWordNum() {
+		return wordNum;
+	}
+
+	public void setWordNum(int wordNum) {
+		this.wordNum = wordNum;
+	}
+
+	public String getPrintTime() {
+		return printTime;
+	}
+
+	public void setPrintTime(String printTime) {
+		this.printTime = printTime;
+	}
+
+	public int getBooksize() {
+		return booksize;
+	}
+
+	public void setBooksize(int booksize) {
+		this.booksize = booksize;
+	}
+
+	public String getPaper() {
+		return paper;
+	}
+
+	public void setPaper(String paper) {
+		this.paper = paper;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public String getImgUrlBig() {
+		return imgUrlBig;
+	}
+
+	public void setImgUrlBig(String imgUrlBig) {
+		this.imgUrlBig = imgUrlBig;
+	}
+
+	public String getImgUrlSmall() {
+		return imgUrlSmall;
+	}
+
+	public void setImgUrlSmall(String imgUrlSmall) {
+		this.imgUrlSmall = imgUrlSmall;
 	}
 }

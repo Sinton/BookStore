@@ -8,17 +8,6 @@ public class User {
 	private String registerDate;
 	private String profileId;
 
-	public User() {
-	}
-
-	public User(int uid, String salt, String password, String registerDate, String profileId) {
-		setUid(uid);
-		setSalt(salt);
-		setPassword(password);
-		setRegisterDate(registerDate);
-		setProfileId(profileId);
-	}
-
 	public int getUid() {
 		return uid;
 	}
@@ -39,23 +28,23 @@ public class User {
 		return profileId;
 	}
 
-	private void setUid(int uid) {
+	public void setUid(int uid) {
 		this.uid = uid;
 	}
 
-	private void setSalt(String salt) {
+	public void setSalt(String salt) {
 		this.salt = salt;
 	}
 
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	private void setRegisterDate(String registerDate) {
+	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
 
-	private void setProfileId(String profileId) {
+	public void setProfileId(String profileId) {
 		this.profileId = profileId;
 	}
 }

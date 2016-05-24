@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="__PUBLIC__/Admin/images/favicon.png">
+    <title>Clean Zone</title>
+    <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800'>
+    <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Raleway:300,200,100'>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/fonts/font-awesome-4/css/font-awesome.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.nanoscroller/nanoscroller.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.easypiechart/jquery.easy-pie-chart.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap.switch/bootstrap-switch.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap.slider/css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.niftymodals/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/jquery.icheck/skins/square/blue.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/style.css" />
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <include file="Public/navbar" />
+    <div id="cl-wrapper" class="fixed-menu">
+        <!-- Fixed silder -->
+        <include file="Public/sidebar" />
+        <div class="container-fluid" id="pcont">
+            <include file="Public/head"/>
+            <div class="cl-mcont">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="block-flat">
+                            <div class="header">
+                            	<div class="row">
+	                            	<div class="col-sm-12 col-md-12">
+		                            	<div class="pull-right"><a href="{:U('__CONTROLLER__/add')}" class="btn btn-primary">添加新游戏</a></div>
+		                            	<div class="pull-left"><h3>游戏列表</h3></div>
+	                            	</div>
+                            	</div>
+	                        </div>
+                            <div class="content">
+                                <table class="no-border">
+                                    <thead class="no-border">
+                                        <tr>
+                                            <th style="width:2%;">
+                                                <input class="icheck" id="check-all" type="checkbox" name="checkall">
+                                            </th>
+                                            <th class="text-center" style="width:3%;"><strong>ID</strong></th>
+                                            <th class="text-center" style="width:10%;"><strong>游戏名称</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>游戏拼音</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>游戏Logo</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>游戏类别</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>推荐游戏</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>浏览次数</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>玩家人数</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>精品游戏</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>上架情况</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>创建时间</strong></th>
+                                            <th class="text-center" style="width:8%;"><strong>更新时间</strong></th>
+                                            <th class="text-center" style="width:5%;"><strong>操作</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="no-border-y">
+                                    	<volist name="games" id="vo">
+	                                        <tr>
+	                                            <td><input type="checkbox" class="icheck"></td>
+	                                            <td class="text-center">{$vo.game_id}</td>
+	                                            <td class="text-center">{$vo.name}</td>
+	                                            <td class="text-center">{$vo.pinyin}</td>
+	                                            <td class="text-center"><img width="50px;" height="50px;" src="{$vo.logo_url}" alt="游戏logo"></td>
+	                                            <td class="text-center"><label class="label label-primary">{$vo.category_name}</label></td>
+	                                            <td class="text-center">
+	                                            	<eq name="vo.recommend" value="0">
+		                                            	<span class="badge badge-default">一般</span>
+	                                            	<else/>
+	                                            		<span class="badge badge-success">推荐</span>
+	                                            	</eq>
+	                                            </td>
+	                                            <td class="text-center">{$vo.vistor_number}</td>
+	                                            <td class="text-center">{$vo.player_number}</td>
+	                                            <td class="text-center">
+	                                            	<eq name="vo.boutique" value="0">
+		                                            	<span class="badge badge-default">一般</span>
+	                                            	<else/>
+	                                            		<span class="badge badge-success">精品</span>
+	                                            	</eq>
+	                                            </td>
+	                                            <!-- <td class="text-center">
+	                                            	<input class="switch" type="checkbox" data-size="small" data-on-text="是" data-off-text="否" checked >
+	                                            </td> -->
+	                                            <td class="text-center">
+	                                            	<if condition="$vo.shelve eq 0">
+	                                            		<span class="badge badge-default">未上架</span>
+	                                            	<elseif condition="$vo.shelve eq 1"/>
+	                                            		<span class="badge badge-success">已上架</span>
+	                                            	<else />
+	                                            		<span class="badge badge-warning">已下架</span>
+	                                            	</if>
+	                                            </td>
+	                                            <td class="text-center">{$vo.create_date|date="Y-m-d H:i:s",###}</td>
+	                                            <td class="text-center">
+	                                            	<eq name="vo.update_date" value="0">
+	                                            		未更新
+	                                            	<else/>
+	                                            		{$vo.update_date|date="Y-m-d H:i:s",###}
+	                                            	</eq>
+	                                            </td>
+	                                            <td class="text-center">
+	                                                <div class="btn-group">
+	                                                    <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown">
+	                                                    	<i class="fa fa-pencil fa-lg"></i>编辑
+	                                                    	<span class="caret"></span>
+	                                                        <span class="sr-only"></span>
+	                                                    </button>
+	                                                    <ul class="dropdown-menu" role="menu">
+	                                                        <li><a href="{:U('__CONTROLLER__/modify',array( game => $vo['game_id'] ) ) }"><i class="fa fa-eye"></i>查看并修改游戏</a></li>
+	                                                        <li class="divider"></li>
+	                                                        <li class="md-trigger delete" data-modal="colored-danger"><a href="#"><i class="fa fa-times"></i>删除该游戏</a></li>
+	                                                    </ul>
+	                                                </div>
+	                                            </td>
+	                                        </tr>
+                                    	</volist>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="pull-left">
+                                            <button type="button" class="btn btn-primary btn-sm">批量删除</button>
+                                            <button type="button" class="btn btn-primary btn-sm">全部导出</button>
+                                        </div>
+                                        <div class="pull-right">
+                                        	{$page}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<include file="Public/modal"/>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.nanoscroller/jquery.nanoscroller.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.easypiechart/jquery.easy-pie-chart.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/behaviour/general.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.nestable/jquery.nestable.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap.switch/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.select2/select2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap.slider/js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.niftymodals/js/jquery.modalEffects.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //initialize the javascript
+            App.init();
+            $("#check-all").on('ifChanged', function() {
+                var checkboxes = $(".no-border-y").find(':checkbox');
+                if ($(this).is(':checked')) {
+                    checkboxes.iCheck('check');
+                } else {
+                    checkboxes.iCheck('uncheck');
+                }
+            });
+            var id,cols;
+            $('.delete').click( function() {
+            	id = $(this).closest('tr').children(':eq(1)').text();
+            });
+            
+            $('.modal-footer>button.btn-danger').click( function() {
+            	console.log($('tbody>tr:eq(' + (id-1) + ') :eq(5)'));
+            	/* $.ajax({
+            		url: '__CONTROLLER__/ajaxDeleteGame',
+            		type: 'POST',
+            		dataType: 'json',
+            		data: {'id' : id}
+            	})
+            	.done(function(result) {
+            		if(1 == result.code) {
+	        			console.log("删除成功");
+            		}
+            		else
+            			console.log(result.data);
+        		})
+        		.fail(function() {
+        			console.log("error");
+        		}); */
+            });
+            
+            switch("__CONTROLLER__"){
+            	case "/Admin/Game":
+            		$('.fa-gamepad').parent().parent('li').addClass('open');
+            		$('.fa-gamepad').parent().next('ul').css('display','block');
+            		switch("__ACTION__"){
+            			case "/Admin/Game/index":
+            			case "/Admin/Game/add":
+            			case "/Admin/Game/mofidy":
+            				$('.fa-gamepad').parent().next().children(':eq(0)').addClass('active');
+            				break;
+            			case "/Admin/Game/category":
+            				$('.fa-gamepad').parent().next().children(':eq(1)').addClass('active');
+            				break;
+            			case "/Admin/Game/subject":
+            				$('.fa-gamepad').parent().next().children(':eq(2)').addClass('active');
+            				break;
+            		}
+            		break;
+            	case "/Admin/Index":
+            		break;
+            	case "/Admin/User":
+            		break;
+            }
+        });
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/behaviour/voice-commands.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.flot/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.flot/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.flot/jquery.flot.labels.js"></script>
+</body>
+
+</html>
