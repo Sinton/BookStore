@@ -2,7 +2,7 @@ package edu.zjut.dao;
 
 import java.sql.SQLException;
 
-import edu.zjut.model.Admin;
+import edu.zjut.utils.DBUtils;
 
 public class AdminDao {
 	
@@ -13,8 +13,9 @@ public class AdminDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Admin find(String name, String password) throws SQLException {
-		String sql = "select * from t_admin where name = ? and adminpwd = ?";
-		return null;
+	public void find(String name, String password) throws SQLException {
+		DBUtils dbUtils = new DBUtils();
+		String sql = "select * from t_admin where name = '" + name + "' and adminpwd = '" + password + "'";
+		System.out.println(dbUtils.exceteSQl(sql));
 	}
 }

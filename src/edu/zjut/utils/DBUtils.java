@@ -8,30 +8,33 @@ import java.sql.Statement;
 
 public class DBUtils {
 	
+	private final String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private final String DB_HOST = "localhost:";
 	private final String DB_USER = "root";
 	private final String DB_PASSWORD = "root";
 	private final String DB_DBNAME = "bookstore";
 	private final String DB_PORT = "3306/";
 	private final String DB_URL = "jdbc:mysql://" + DB_HOST + DB_PORT + DB_DBNAME;
-	private Connection connection;
 	private Statement st = null;
 	private ResultSet rs = null;
+	public Connection connection;
 	
 	public DBUtils() {
-		connection = this.getConnection();
+		connection = this.getConn();
+		String ssString;
+		StringBuilder stringBuilder;
 	}
 
 	/**
 	 * 连接MySQL数据库
 	 * @return
 	 */
-	private Connection getConnection() {
+	private Connection getConn() {
 		if (connection != null)
 			return connection;
 		else {
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName(DB_DRIVER);
 				connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
@@ -45,7 +48,7 @@ public class DBUtils {
 	 * 关闭数据库连接
 	 * @return
 	 */
-	public boolean closeDB() {
+	public boolean closeConn() {
 		try {
 			connection.close();
 			return true;
@@ -55,6 +58,11 @@ public class DBUtils {
 		}
 	}
 	
+	/**
+	 * 执行各种SQL语句
+	 * @param sql
+	 * @return
+	 */
 	public ResultSet exceteSQl(String sql) {
 		try {
 			st = connection.createStatement();

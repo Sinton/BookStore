@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="在线书城">
+    <meta name="author" content="Sinton">
+    <title>工大E书城 - 登录</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style type="text/css">
+        body {
+            font-family: "微软雅黑";
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">菜单</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="nav navbar-brand" href="./index.html"><p style="color: #e3e3e3"><img src="favicon.ico" alt="" width="25px"> 工大E书城</p></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./index.html">主页</a></li>
+                <li><a href="./login.html">登录</a></li>
+                <li><a href="./register.html">注册</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="搜索">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="panel panel-info" style="margin-top: 10px">
+                <div class="panel-heading text-center"><b>登录</b></div>
+                <div class="panel-body">
+                    <div class="col-sm-7">
+                        <img src="img/login_baner.png" alt="...">
+                    </div>
+                    <div class="col-sm-5" style="margin-top: 10%;">
+                        <form class="form-horizontal" action="" method="post">
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">邮箱</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="email" placeholder="邮箱" required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">密码</label>
+
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password" placeholder="密码" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <label>没有帐号？<a href="register.html">立即注册</a></label>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox">记住密码</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="button" class="btn btn-lg btn-primary">立即登录</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-push-4 col-sm-6" style="margin: 20px 20px 20px 20px;">计算不了机 &copy; 2016 All Rights Reserved.</div>
+    </div>
+</div>
+</body>
+</html>

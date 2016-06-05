@@ -1,6 +1,7 @@
 package edu.zjut.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -9,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.zjut.dao.AdminDao;
 import edu.zjut.model.Admin;
 
-@WebServlet(name="AdminServlet",urlPatterns={"/admin/login.do"})
-public class AdminServlet extends HttpServlet {
+@WebServlet(name="AdminLoginServlet",urlPatterns={"/admin/login.do"})
+public class AdminLoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private static final String USERNAME = "RG@zjut.edu.cn";
@@ -27,6 +29,12 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email").trim().toString();
 		String password = request.getParameter("password").trim().toString();
+		AdminDao adminDao = new AdminDao();
+		try {
+			adminDao.find(email, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		// 判断用户名、密码是否为空
 		if (!"".equals(email) && !"".equals(password)) {

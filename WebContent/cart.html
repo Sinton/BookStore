@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="在线书城">
+    <meta name="author" content="Sinton">
+    <title>工大E书城 - 购物车</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style type="text/css">
+        body {
+            font-family: "微软雅黑";
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">菜单</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="nav navbar-brand" href="./index.html"><p style="color: #e3e3e3"><img src="favicon.ico" alt="" width="25px"> 工大E书城</p></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./index.html">主页</a></li>
+                <li><a href="./login.html">登录</a></li>
+                <li><a href="./register.html">注册</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="搜索">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="panel panel-success" style="margin-top: 10px">
+                <div class="panel-heading text-center"><b>购物车列表清单</b></div>
+                <div class="alert-warning text-center" style="line-height: 40px;">
+                    您还没有登录！登录后购物车的商品将保存到您账号中
+                    <button class="btn btn-danger btn-xs">立即登录</button>
+                </div>
+                <!--<div class="panel-body">
+                    <div class="bs-callout bs-callout-info" id="callout-scrollspy-needs-nav"></div>
+                </div>-->
+                <div class="table table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox"> 全选</th>
+                            <th>商品</th>
+                            <th>单价（元）</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th align="left" style="line-height:80px;"><input type="checkbox"></th>
+                                <td align="left">
+                                    <img src="img/item_cart.jpg" alt="">
+                                    <b>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</b>
+                                </td>
+                                <td align="left" style="line-height:80px;">68.10</td>
+                                <td align="left" style="line-height:80px;">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-default btn-xs disabled"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                        <a href="#" class="btn btn-default btn-xs disabled">1</a>
+                                        <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                    </div>
+                                </td>
+                                <td align="left" style="line-height:80px;">68.10</td>
+                                <td align="left" style="line-height:80px;"><a class="btn btn-danger btn-xs" href="#">删除</a></td>
+                            </tr>
+                            <tr>
+                                <th align="left" style="line-height:80px;"><input type="checkbox"></th>
+                                <td align="left">
+                                    <img src="img/item_cart.jpg" alt="">
+                                    <b>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</b>
+                                </td>
+                                <td align="left" style="line-height:80px;">68.10</td>
+                                <td align="left" style="line-height:80px;">
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-default btn-xs disabled"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                        <a href="#" class="btn btn-default btn-xs disabled">1</a>
+                                        <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                    </div>
+                                </td>
+                                <td align="left" style="line-height:80px;">68.10</td>
+                                <td align="left" style="line-height:80px;"><a class="btn btn-danger btn-xs" href="#">删除</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="border-top:1px dashed #999;">
+                        <div style="line-height: 45px;">
+                            <div class="col-sm-5">
+                                <a href="#">删除选中的商品</a>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="col-sm-6">
+                                    已选择<b class="text-danger"> 2 </b>件商品
+                                </div>
+                                <div class="col-sm-6">
+                                    总价（不含运费）：<b class="text-danger">￥136.20</b>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-danger btn-lg btn-block">去结算</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="page-header">猜你喜欢</h3>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-push-4 col-sm-6" style="margin: 20px 20px 20px 20px;">计算不了机 &copy; 2016 All Rights Reserved.</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="在线书城">
+    <meta name="author" content="Sinton">
+    <title>工大E书城 - 首页</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style type="text/css">
+        body {
+            font-family: "微软雅黑";
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">菜单</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="nav navbar-brand" href="./index.html"><p style="color: #e3e3e3"><img src="favicon.ico" alt="" width="25px"> 工大E书城</p></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./index.html">主页</a></li>
+                <li><a href="./login.html">登录</a></li>
+                <li><a href="./register.html">注册</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="搜索">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="panel panel-info nav-sidebar">
+                <div class="panel-heading" role="tab" id="programing">
+                    <h4 class="panel-title">
+                        <a class="" role="button" data-toggle="collapse" href="#programing-item" aria-expanded="true" aria-controls="programing-item">
+                            <b>编程语言与程序设计</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="programing-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="programing" aria-expanded="true">
+                    <ul class="list-group">
+                        <li class="list-group-item">C语言</li>
+                        <li class="list-group-item">C++</li>
+                        <li class="list-group-item">C#</li>
+                        <li class="list-group-item">Java</li>
+                        <li class="list-group-item">JavaScript</li>
+                        <li class="list-group-item">PHP</li>
+                        <li class="list-group-item">Python</li>
+                        <li class="list-group-item">Html</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-info nav-sidebar">
+                <div class="panel-heading" role="tab" id="os">
+                    <h4 class="panel-title">
+                        <a class="" role="button" data-toggle="collapse" href="#os-item" aria-expanded="true" aria-controls="os-item">
+                            <b>操作系统</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="os-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="os" aria-expanded="true">
+                    <ul class="list-group">
+                        <li class="list-group-item">Windows</li>
+                        <li class="list-group-item">Linux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-info nav-sidebar">
+                <div class="panel-heading" role="tab" id="database">
+                    <h4 class="panel-title">
+                        <a class="" role="button" data-toggle="collapse" href="#database-item" aria-expanded="true" aria-controls="database-item">
+                            <b>数据库</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="database-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="database" aria-expanded="true">
+                    <ul class="list-group">
+                        <li class="list-group-item">数据挖掘</li>
+                        <li class="list-group-item">SQL语言</li>
+                        <li class="list-group-item">MySQL</li>
+                        <li class="list-group-item">Oracle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item">
+                        <img class="first-slide" src="img/baner_01.jpg" alt="First slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1><label class="label label-success">新书推荐:一</label></h1>
+                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="second-slide" src="img/baner_02.jpg" alt="Second slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1><label class="label label-success">新书推荐:二</label></h1>
+                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item active">
+                        <img class="third-slide" src="img/baner_03.jpg" alt="Third slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1><label class="label label-success">新书推荐:三</label></h1>
+                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <h3 class="page-header">1F 新书速递</h3>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="page-header">2F 丛书推荐</h3>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="page-header">3F 畅销经典</h3>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="img/item.jpg" alt="...">
+                        <div class="caption">
+                            <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
+                            <p><label class="label label-danger">¥68.10</label></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-push-4 col-sm-6" style="margin: 20px 20px 20px 20px;">计算不了机 &copy; 2016 All Rights Reserved.</div>
+    </div>
+</div>
+</body>
+</html>
