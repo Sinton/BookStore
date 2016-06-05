@@ -10,8 +10,4 @@
 <link rel="stylesheet" href="css/dashboard.css">
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/bootstrap.js"></script>
-<style type="text/css">
-    body {
-        font-family: "微软雅黑";
-    }
-</style>
+<style type="text/css">body {font-family: "微软雅黑";padding-top: 50px;}</style>

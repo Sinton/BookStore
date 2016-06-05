@@ -14,7 +14,7 @@
                 <div class="panel-heading text-center"><b>购物车列表清单</b></div>
                 <div class="alert-warning text-center" style="line-height: 40px;">
                     您还没有登录！登录后购物车的商品将保存到您账号中
-                    <button class="btn btn-danger btn-xs">立即登录</button>
+                    <a href="login.jsp" class="btn btn-danger btn-xs">立即登录</a>
                 </div>
                 <!--<div class="panel-body">
                     <div class="bs-callout bs-callout-info" id="callout-scrollspy-needs-nav"></div>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-sm-5">
                                 <div class="col-sm-6">
-                                    已选择<b class="text-danger"> 2 </b>件商品
+                                    已选择<b class="text-danger"> 3 </b>件商品
                                 </div>
                                 <div class="col-sm-6">
                                     总价（不含运费）：<b class="text-danger">￥136.20</b>

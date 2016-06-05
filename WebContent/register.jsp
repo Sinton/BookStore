@@ -16,25 +16,25 @@
                         <img src="img/login_baner.png" alt="">
                     </div>
                     <div class="col-sm-5" style="margin-top: 10%;">
-                        <form class="form-horizontal" action="" method="post">
+                        <form class="form-horizontal" action="register.do" method="post">
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">邮箱</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="email" placeholder="邮箱" required autofocus>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="邮箱" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-sm-3 control-label">密码</label>
 
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="password" placeholder="密码" required>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="comfpassword" class="col-sm-3 control-label">确认密码</label>
 
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="comfpassword" placeholder="确认密码" required>
+                                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="确认密码" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="button" class="btn btn-lg btn-primary">立即注册</button>
+                                    <button type="submit" class="btn btn-lg btn-primary">立即注册</button>
                                 </div>
                             </div>
                         </form>

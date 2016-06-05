@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="col-sm-7">
-                            <button class="btn btn-danger"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
+                            <a href="cart.jsp" class="btn btn-danger"><i class="glyphicon glyphicon-shopping-cart"></i> 加入购物车</a>
                         </div>
                     </div>
                     <br>
