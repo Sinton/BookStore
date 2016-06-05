@@ -1,48 +1,11 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="在线书城">
-    <meta name="author" content="Sinton">
-    <title>工大E书城 - 分类页</title>
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <script src="js/jquery-1.9.1.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <style type="text/css">
-        body {
-            font-family: "微软雅黑";
-        }
-    </style>
+<jsp:include page="public/head.jsp" />
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">菜单</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="nav navbar-brand" href="./index.html"><p style="color: #e3e3e3"><img src="favicon.ico" alt="" width="25px"> 工大E书城</p></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="./index.html">主页</a></li>
-                <li><a href="./login.html">登录</a></li>
-                <li><a href="./register.html">注册</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="搜索">
-            </form>
-        </div>
-    </div>
-</nav>
+<jsp:include page="public/navbar.jsp" />
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12">
@@ -394,7 +357,7 @@
                 <li class="last"><a href="#">尾页 <span class="glyphicon glyphicon-step-forward"></span></a></li>
             </ul>
         </div>
-        <div class="col-sm-push-4 col-sm-6" style="margin: 20px 20px 20px 20px;">计算不了机 &copy; 2016 All Rights Reserved.</div>
+        <jsp:include page="public/footer.jsp" />
     </div>
 </div>
 </body>

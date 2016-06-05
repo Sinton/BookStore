@@ -1,3 +1,4 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -21,30 +22,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">菜单</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="nav navbar-brand" href="./index.html"><p style="color: #e3e3e3"><img src="favicon.ico" alt="" width="25px"> 工大E书城</p></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="./index.html">主页</a></li>
-                <li><a href="./login.html">登录</a></li>
-                <li><a href="./register.html">注册</a></li>
-                <li><a href="#">关于</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="搜索">
-            </form>
-        </div>
-    </div>
-</nav>
+<jsp:include page="public/navbar.jsp" />
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12">
@@ -77,13 +55,13 @@
                             <h4>班级：软专1502</h4>
                             <h4>学号：201526740222</h4>
                             <hr>
-                            <p>开　源：已开源在Github上</p>
-                            <p>地　址：https://github.com/Sinton</p>
                             <p>前　端：Bootstrap 框架进行布局设计</p>
                             <p>　　|---- 前台：Bootstrap 3</p>
                             <p>　　|---- 后台：Bootstrap 自定义框架</p>
                             <p>后　端：Java</p>
                             <p>数据库：MySQL</p>
+                            <p>开　源：已开源在Github上</p>
+                            <p>地　址：https://github.com/Sinton</p>
                         </div>
                         <div class="page-number">- 1 -</div>
                     </div>
@@ -101,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-push-4 col-sm-6" style="margin: 20px 20px 20px 20px;">计算不了机 &copy; 2016 All Rights Reserved.</div>
+        <jsp:include page="public/footer.jsp" />
     </div>
 </div>
 </body>
