@@ -28,12 +28,11 @@
                     <dd id="view-cover" class="cur">封面</dd>
                     <dd id="view-back">背面</dd>
                     <dd id="open-book">打开/合上书本</dd>
-                    <dd id="view-rotate">360° 旋转</dd>
+                    <dd id="view-rotate">360°旋转</dd>
                 </dl>
             </div>
-
+            
             <h1 class="demo-title">关于</h1>
-
             <div id="book" class="view-cover">
                 <div class="main">
                     <div class="book-font">
