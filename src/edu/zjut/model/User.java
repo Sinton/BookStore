@@ -5,12 +5,12 @@ public class User {
 	private int uid;
 	private String email;
 	private String password;
-	private String registerDate;
+	private long registerDate;
 
 	public User() {
 	}
 	
-	public User(String email, String password, String registerDate) {
+	public User(String email, String password, long registerDate) {
 		setEmail(email);
 		setPassword(password);
 		setRegisterDate(registerDate);
@@ -40,11 +40,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRegisterDate() {
+	public long getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(String registerDate) {
+	public void setRegisterDate(long registerDate) {
 		this.registerDate = registerDate;
 	}
 }

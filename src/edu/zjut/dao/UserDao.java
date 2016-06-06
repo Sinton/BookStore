@@ -31,7 +31,7 @@ public class UserDao {
 		pstmt.setString(1, user.getEmail());
 		pstmt.setString(2, "");
 		pstmt.setString(3, user.getPassword());
-		pstmt.setString(4, user.getRegisterDate());
+		pstmt.setLong(4, user.getRegisterDate());
 		pstmt.setInt(5, 0);
 		pstmt.setString(6, "");
 		int result = pstmt.executeUpdate();
@@ -81,15 +81,42 @@ public class UserDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ResultSet getUser(int uid) throws SQLException {
+	public User getUser(int uid) throws SQLException {
+		User user = new User();
 		String sql = "select * from t_user where uid = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, uid);
 		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			user.setUid(rs.getInt("uid"));
+			user.setEmail(rs.getString("email"));
+			user.setPassword(rs.getString("password"));
+			user.setRegisterDate(rs.getLong("register_date"));
+		}
 		if (pstmt != null)
 			pstmt.close();
 		dbHelp.closeConn();
-		return rs;
+		return user;
+	}
+	
+	/**
+	 * 获取指定Email的用户对象
+	 * @param email
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getUid(String email) throws SQLException {
+		String sql = "select uid from t_user where email = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, email);
+		rs = pstmt.executeQuery();
+		int uid = 0;
+		while (rs.next())
+			uid = rs.getInt("uid");
+		if (pstmt != null)
+			pstmt.close();
+		dbHelp.closeConn();
+		return uid;
 	}
 	
 	/**

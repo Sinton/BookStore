@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.zjut.dao.UserDao;
 import edu.zjut.model.User;
+import edu.zjut.utils.DateHelp;
 
 @WebServlet(name="RegisterServlet",urlPatterns={"/register.do"})
 public class RegisterServlet extends HttpServlet {
@@ -36,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
 			if(validateEmail(email)) {
 				if (validatePassword(password)) {
 					// 注册新用户
-					User user = new User(email, password, getCurrentTime());
+					User user = new User(email, password, new DateHelp().getCurrentTime());
 					UserDao userDao = new UserDao();
 					try {
 						if (userDao.addUser(user)) {
