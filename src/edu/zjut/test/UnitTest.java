@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Test;
@@ -16,7 +17,20 @@ public class UnitTest {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	private DBHelp dbHelp = new DBHelp();
-	private Connection connection = dbHelp.getConn();;
+	private Connection connection = dbHelp.getConn();
+	
+	/**
+	 * 将时间戳转化成具体时间
+	 * @param timeStamp
+	 * @return
+	 */
+	@Test
+	public void TransDate() {
+		long timeStamp = 1465138401;
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		String time = timeFormat.format(new Date(timeStamp * 1000));
+		System.out.println(time);
+	}
 	
 	/**
 	 * 获取指定Email的用户对象

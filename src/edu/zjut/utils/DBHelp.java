@@ -20,8 +20,9 @@ public class DBHelp {
 	 * @return
 	 */
 	public Connection getConn() {
-		if (connection != null)
+		if (connection != null) {
 			return connection;
+		}
 		else {
 			try {
 				Class.forName(DB_DRIVER);

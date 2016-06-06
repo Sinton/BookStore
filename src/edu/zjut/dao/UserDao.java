@@ -65,9 +65,12 @@ public class UserDao {
 	 * @throws SQLException
 	 */
 	public boolean modifyUser(User user) throws SQLException {
-		String sql = "update where uid = ?";
+		String sql = "UPDATE `t_user` SET `nickname`= ? , `status`= ? , `token` = ? WHERE (`uid` = ?);";
 		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, user.getUid());
+		pstmt.setString(1, "");
+		pstmt.setInt(2, 0);
+		pstmt.setString(3, "");
+		pstmt.setInt(4, user.getUid());
 		int result = pstmt.executeUpdate();
 		if (pstmt != null)
 			pstmt.close();
@@ -115,7 +118,6 @@ public class UserDao {
 			uid = rs.getInt("uid");
 		if (pstmt != null)
 			pstmt.close();
-		dbHelp.closeConn();
 		return uid;
 	}
 	
@@ -141,7 +143,7 @@ public class UserDao {
 	 */
 	public boolean removeUsers(ArrayList<Integer> uids) throws SQLException {
 		boolean isAllFinish = false;
-		String sql = "update where uid = ?";
+		String sql = "delete from `t_user` where uid = ?";
 		for (int i = 0; i < uids.size(); i++) {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, uids.get(i));
