@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 					UserDao userDao = new UserDao();
 					try {
 						int uid = userDao.getUid(email);
-						User user = userDao.getUser(uid);
+						User user = userDao.getUserByUid(uid);
 						if (user != null) {
 							request.getSession().setAttribute("user", user);
 							response.sendRedirect("index.jsp");

@@ -2,7 +2,7 @@ package edu.zjut.model;
 
 public class Book {
 
-	private String bookId;
+	private int bid;
 	private String name;
 	private String author;
 	private double price;
@@ -20,12 +20,12 @@ public class Book {
 	private String imgUrlBig;
 	private String imgUrlSmall;
 
-	public String getBookId() {
-		return bookId;
+	public int getBid() {
+		return bid;
 	}
 
-	public void setBookId(String bookId) {
-		this.bookId = bookId;
+	public void setBid(int bid) {
+		this.bid = bid;
 	}
 
 	public String getName() {

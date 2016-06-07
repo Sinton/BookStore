@@ -25,7 +25,7 @@ public class UserDao {
 	 * @return 
 	 * @throws SQLException 
 	 */
-	public boolean addUser(User user) throws SQLException {
+	public boolean createUser(User user) throws SQLException {
 		String sql = "insert into `t_user` (`email`, `nickname`, `password`, `register_date`, `status`, `token`) values (?, ?, ?, ?, ?, ?);";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, user.getEmail());
@@ -42,29 +42,12 @@ public class UserDao {
 	}
 	
 	/**
-	 * 删除指定用户
-	 * @param user
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean removeUser(int uid) throws SQLException {
-		String sql = "delete from where uid = ?";
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, uid);
-		int result = pstmt.executeUpdate();
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return result > 0 ? true : false;
-	}
-	
-	/**
 	 * 修改指定用户信息
 	 * @param user
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean modifyUser(User user) throws SQLException {
+	public boolean updateUser(User user) throws SQLException {
 		String sql = "UPDATE `t_user` SET `nickname`= ? , `status`= ? , `token` = ? WHERE (`uid` = ?);";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, "");
@@ -79,12 +62,29 @@ public class UserDao {
 	}
 	
 	/**
+	 * 删除指定用户
+	 * @param user
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean deleteUser(int uid) throws SQLException {
+		String sql = "delete from where uid = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, uid);
+		int result = pstmt.executeUpdate();
+		if (pstmt != null)
+			pstmt.close();
+		dbHelp.closeConn();
+		return result > 0 ? true : false;
+	}
+	
+	/**
 	 * 获取指定ID的用户对象
 	 * @param uid
 	 * @return
 	 * @throws SQLException
 	 */
-	public User getUser(int uid) throws SQLException {
+	public User getUserByUid(int uid) throws SQLException {
 		User user = new User();
 		String sql = "select * from t_user where uid = ?";
 		pstmt = connection.prepareStatement(sql);
@@ -103,7 +103,7 @@ public class UserDao {
 	}
 	
 	/**
-	 * 获取指定Email的用户对象
+	 * 根据Email获取用户对象
 	 * @param email
 	 * @return
 	 * @throws SQLException
@@ -141,7 +141,7 @@ public class UserDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean removeUsers(ArrayList<Integer> uids) throws SQLException {
+	public boolean removeAllUsers(ArrayList<Integer> uids) throws SQLException {
 		boolean isAllFinish = false;
 		String sql = "delete from `t_user` where uid = ?";
 		for (int i = 0; i < uids.size(); i++) {

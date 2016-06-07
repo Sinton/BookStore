@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 					User user = new User(email, password, new Helper().getCurrentTimeStamp());
 					UserDao userDao = new UserDao();
 					try {
-						if (userDao.addUser(user)) {
+						if (userDao.createUser(user)) {
 							request.getSession().setAttribute("user", user);
 							response.sendRedirect("login.jsp");
 						}else {
