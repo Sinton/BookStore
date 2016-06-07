@@ -6,6 +6,10 @@ public class Category {
 	private String name;
 	private String desc;
 
+	public Category() {
+		
+	}
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

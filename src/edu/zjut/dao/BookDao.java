@@ -12,8 +12,8 @@ import edu.zjut.utils.DBHelp;
 public class BookDao {
 	
 	private PreparedStatement pstmt = null;
-	private Connection connection = null;
 	private ResultSet rs = null;
+	private Connection connection = null;
 	private DBHelp dbHelp = new DBHelp();
 	
 	public BookDao() {

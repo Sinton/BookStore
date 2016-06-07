@@ -31,7 +31,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String password = request.getParameter("password").trim().toString();
 		AdminDao adminDao = new AdminDao();
 		try {
-			adminDao.find(email, password);
+			adminDao.getAdmin(email, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

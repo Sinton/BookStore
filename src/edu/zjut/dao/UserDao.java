@@ -13,7 +13,7 @@ public class UserDao {
 
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	private Connection connection;
+	private Connection connection = null;
 	private DBHelp dbHelp = new DBHelp();
 	
 	public UserDao() {

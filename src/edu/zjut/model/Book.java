@@ -20,6 +20,10 @@ public class Book {
 	private String imgUrlBig;
 	private String imgUrlSmall;
 
+	public Book() {
+		
+	}
+	
 	public int getBid() {
 		return bid;
 	}

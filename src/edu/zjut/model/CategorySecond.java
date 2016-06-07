@@ -5,6 +5,10 @@ public class CategorySecond {
 	private int categorySecondId;
 	private String secondName;
 	
+	public CategorySecond() {
+		
+	}
+	
 	public CategorySecond(String secondName) {
 		setSecondName(secondName);
 	}
