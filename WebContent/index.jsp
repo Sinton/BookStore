@@ -1,3 +1,7 @@
+<%@page import="edu.zjut.model.SecondCategory"%>
+<%@page import="edu.zjut.model.Category"%>
+<%@page import="edu.zjut.dao.SecondCategoryDao"%>
+<%@page import="edu.zjut.dao.CategoryDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -11,55 +15,28 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <div class="panel panel-info nav-sidebar">
-                <div class="panel-heading" role="tab" id="programing">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" href="#programing-item" aria-expanded="true" aria-controls="programing-item"><b>编程语言与程序设计</b></a>
-                    </h4>
-                </div>
-                <div id="programing-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="programing" aria-expanded="true">
-                    <ul class="list-group">
-                        <li class="list-group-item">C语言</li>
-                        <li class="list-group-item">C++</li>
-                        <li class="list-group-item">C#</li>
-                        <li class="list-group-item">Java</li>
-                        <li class="list-group-item">JavaScript</li>
-                        <li class="list-group-item">PHP</li>
-                        <li class="list-group-item">Python</li>
-                        <li class="list-group-item">Html</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="panel panel-info nav-sidebar">
-                <div class="panel-heading" role="tab" id="os">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" href="#os-item" aria-expanded="true" aria-controls="os-item"><b>操作系统</b></a>
-                    </h4>
-                </div>
-                <div id="os-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="os" aria-expanded="true">
-                    <ul class="list-group">
-                        <li class="list-group-item">Windows</li>
-                        <li class="list-group-item">Linux</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="panel panel-info nav-sidebar">
-                <div class="panel-heading" role="tab" id="database">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" href="#database-item" aria-expanded="true" aria-controls="database-item"><b>数据库</b></a>
-                    </h4>
-                </div>
-                <div id="database-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="database" aria-expanded="true">
-                    <ul class="list-group">
-                        <li class="list-group-item">数据挖掘</li>
-                        <li class="list-group-item">SQL语言</li>
-                        <li class="list-group-item">MySQL</li>
-                        <li class="list-group-item">Oracle</li>
-                    </ul>
-                </div>
-            </div>
+        	<%
+        		CategoryDao categoryDao = new CategoryDao();
+        		ArrayList<Category> categories = new ArrayList<Category>();
+        		categories = categoryDao.getAllCategories();
+        		request.getSession().setAttribute("categories", categories);
+        	%>
+        	<c:forEach items="${categories}" var="category">
+        		<div class="panel panel-info nav-sidebar">
+	                <div class="panel-heading" role="tab" id="${category.getDesc()}">
+	                    <h4 class="panel-title">
+	                        <a role="button" data-toggle="collapse" href="#${category.getDesc()}-item" aria-expanded="true" aria-controls="${category.getDesc()}-item"><b>${category.getName()}</b></a>
+	                    </h4>
+	                </div>
+	                <div id="${category.getDesc()}-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="${category.getDesc()}" aria-expanded="true">
+	                    <ul class="list-group">
+	                    	<c:forEach items="${category.getSecondCategories()}" var="secondCategory">
+	                    		<li class="list-group-item">${secondCategory.getSecondCategoryName()}</li>
+	                    	</c:forEach>
+	                    </ul>
+	                </div>
+	            </div>
+        	</c:forEach>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 

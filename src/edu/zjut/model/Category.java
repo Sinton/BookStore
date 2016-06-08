@@ -1,18 +1,22 @@
 package edu.zjut.model;
 
+import java.util.ArrayList;
+
 public class Category {
 
 	private int categoryId;
 	private String name;
 	private String desc;
+	private ArrayList<SecondCategory> secondCategories;
 
 	public Category() {
 	}
 	
-	public Category(int categoryId, String name, String desc) {
+	public Category(int categoryId, String name, String desc, ArrayList<SecondCategory> secondCategories) {
 		setCategoryId(categoryId);
 		setName(name);
 		setDesc(desc);
+		setSecondCategories(secondCategories);
 	}
 
 	public int getCategoryId() {
@@ -37,5 +41,13 @@ public class Category {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public ArrayList<SecondCategory> getSecondCategories() {
+		return secondCategories;
+	}
+
+	public void setSecondCategories(ArrayList<SecondCategory> secondCategories) {
+		this.secondCategories = secondCategories;
 	}
 }

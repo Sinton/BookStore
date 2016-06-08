@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import edu.zjut.model.CategorySecond;
+import edu.zjut.model.SecondCategory;
 import edu.zjut.utils.DBHelp;
 
-public class CategorySecondDao {
+public class SecondCategoryDao {
 	
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	private Connection connection = null;
 	private DBHelp dbHelp = new DBHelp();
 	
-	public CategorySecondDao() {
+	public SecondCategoryDao() {
 		connection = dbHelp.getConn();
 	}
 
@@ -26,10 +26,10 @@ public class CategorySecondDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean addCategorySecond(CategorySecond categorySecond) throws SQLException {
+	public boolean addSecondCategory(SecondCategory categorySecond) throws SQLException {
 		String sql = "insert";
 		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, categorySecond.getSecondName());
+		pstmt.setString(1, categorySecond.getSecondCategoryName());
 		int result = pstmt.executeUpdate();
 		if (pstmt != null)
 			pstmt.close();
@@ -43,10 +43,10 @@ public class CategorySecondDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean updateCategorySecond(CategorySecond categorySecond) throws SQLException {
+	public boolean updateSecondCategory(SecondCategory categorySecond) throws SQLException {
 		String sql = "update";
 		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, categorySecond.getSecondName());
+		pstmt.setString(1, categorySecond.getSecondCategoryName());
 		int result = pstmt.executeUpdate();
 		if (pstmt != null)
 			pstmt.close();
@@ -60,7 +60,7 @@ public class CategorySecondDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean deleteCategorySecond(int categorySecondId) throws SQLException {
+	public boolean deleteSecondCategory(int categorySecondId) throws SQLException {
 		String sql = "delete form t_category_second where category_second_id = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, categorySecondId);
@@ -77,19 +77,41 @@ public class CategorySecondDao {
 	 * @return
 	 * @throws SQLException 
 	 */
-	public ArrayList<CategorySecond> getAllCategorySeconds() throws SQLException {
-		String sql = "select * from t_category_second;";
+	public ArrayList<SecondCategory> getAllSecondCategories() throws SQLException {
+		String sql = "select * from t_second_category;";
 		pstmt = connection.prepareStatement(sql);
 		rs = pstmt.executeQuery();
-		ArrayList<CategorySecond> secondCategories = new ArrayList<CategorySecond>();
+		ArrayList<SecondCategory> secondCategories = new ArrayList<SecondCategory>();
 		while (rs.next()) {
-			CategorySecond secondCategory = new CategorySecond();
-			secondCategory.setCategorySecondId(rs.getInt("category_second_id"));
-			secondCategory.setSecondName(rs.getString("second_name"));
+			SecondCategory secondCategory = new SecondCategory();
+			secondCategory.setSecondCategoryId(rs.getInt("second_category_id"));
+			secondCategory.setSecondCategoryName(rs.getString("second_category_name"));
 			secondCategory.setCategoryId(rs.getInt("category_id"));
 			secondCategories.add(secondCategory);
 		}
 		dbHelp.closeConn();
+		return secondCategories;
+	}
+	
+	/**
+	 * 获取一级分类下的全部二级分类
+	 * @param categoryId
+	 * @return
+	 * @throws SQLException 
+	 */
+	public ArrayList<SecondCategory> getSecondCategoriesByCategoryId(int categoryId) throws SQLException {
+		String sql = "select * from t_second_category where category_id = ?;";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, categoryId);
+		rs = pstmt.executeQuery();
+		ArrayList<SecondCategory> secondCategories = new ArrayList<SecondCategory>();
+		while (rs.next()) {
+			SecondCategory secondCategory = new SecondCategory();
+			secondCategory.setSecondCategoryId(rs.getInt("second_category_id"));
+			secondCategory.setSecondCategoryName(rs.getString("second_category_name"));
+			secondCategory.setCategoryId(rs.getInt("category_id"));
+			secondCategories.add(secondCategory);
+		}
 		return secondCategories;
 	}
 }

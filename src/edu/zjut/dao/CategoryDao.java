@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import edu.zjut.model.Category;
+import edu.zjut.model.SecondCategory;
 import edu.zjut.utils.DBHelp;
 
 public class CategoryDao {
@@ -82,11 +83,14 @@ public class CategoryDao {
 		pstmt = connection.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		ArrayList<Category> categories = new ArrayList<Category>();
+		SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
 		while (rs.next()) {
 			Category category = new Category();
+			ArrayList<SecondCategory> secondCategories = secondCategoryDao.getSecondCategoriesByCategoryId(rs.getInt("category_id"));
 			category.setCategoryId(rs.getInt("category_id"));
 			category.setName(rs.getString("category_name"));
 			category.setDesc(rs.getString("category_desc"));
+			category.setSecondCategories(secondCategories);
 			categories.add(category);
 		}
 		dbHelp.closeConn();
