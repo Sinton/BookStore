@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -17,35 +18,29 @@
         <div class="col-sm-12 col-md-12">
             <div class="panel panel-success">
                 <div class="panel-heading">　</div>
-                <!--<div class="panel-body">
+                <!-- <div class="panel-body">
                     <div class="bs-callout bs-callout-info" id="callout-scrollspy-needs-nav"></div>
-                </div>-->
+                </div> -->
                 <div class="table table-responsive">
                     <table class="table table-striped table-condensed">
                         <tr>
                             <th><label class="label label-success">出版社：</label></th>
-                            <td align="left"><label class="control-label"><a href="#">清华大学出版社</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">电子工业出版社</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">机械工业出版社</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">人民邮电出版社</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">北京大学出版社</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">其他</a></label></td>
+                            <c:forEach items="${publishs}" var="publish">
+                            	<td align="left"><label class="control-label"><a href="#">${publish}</a></label></td>
+                            </c:forEach>
                         </tr>
                         <tr>
                             <th><label class="label label-success">价格：</label></th>
-                            <td align="left"><label class="control-label"><a href="#">0-19</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">20-39</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">40-59</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">60-89</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">90-139</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">140以上</a></label></td>
+                            <c:forEach items="${priceRanges}" var="priceRange">
+                            	<td align="left"><label class="control-label"><a href="#">${priceRange}</a></label></td>
+                            </c:forEach>
                         </tr>
                         <tr>
                             <th><label class="label label-success">折扣：</label></th>
-                            <td align="left"><label class="control-label"><a href="#">0-3折</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">3-5折</a></label></td>
-                            <td align="left"><label class="control-label"><a href="#">5-7折</a></label></td>
-                            <td align="left" colspan="3"><label class="control-label"><a href="#">7折及以上</a></label></td>
+                            <c:forEach items="${discounts}" var="discount">
+                            	<td align="left"><label class="control-label"><a href="#">${discount}</a></label></td>
+                            </c:forEach>
+                            <td align="left" colspan="2"></td>
                         </tr>
                     </table>
                      <div style="text-align:center;margin-right:10px;border-top:1px dashed  #999;line-height:30px;">
@@ -53,296 +48,24 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-12">
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价 <label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价 <label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价 <label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="thumbnail">
-                    <img src="img/item.jpg" alt="...">
-                    <div class="caption">
-                        <h4 style="color: #c9302c">¥68.10</h4>
-                        <h6>已有评价<label class="label label-info">9140个</label></h6>
-                        <h5>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h5>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</button>
-                        <br>
-                        <span>周志明 著</span>
-                        <br>
-                        <span>机械工业出版社</span>
-                        <br>
-                        <span>2013-05</span>
-                    </div>
-                </div>
-            </div>
+        </div><div class="col-sm-12 col-md-12">
+        	<c:forEach items="${books}" var="book">
+	            <div class="col-sm-3">
+	                <div class="thumbnail">
+	                    <a href="item.jsp"><img src="img/item.jpg" alt="..."></a>
+	                    <div class="caption">
+	                        <h4 style="color: #c9302c">¥${book.getPrice()}</h4>
+	                        <!-- <h6>已有评价 <label class="label label-info">9140个</label></h6> -->
+	                        <h5><a href="item.jsp">${book.getName()}</a></h5>
+	                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
+	                        <a class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a><br>
+	                        <span>${book.getAuthor()}</span><br>
+	                        <span>${book.getPublishing()}</span><br>
+	                        <span>${book.getPublishTime()}</span>
+	                    </div>
+	                </div>
+	            </div>
+            </c:forEach>
         </div>
         <div class="col-sm-offset-4 col-sm-6">
             <ul class="pagination pagination-sm">

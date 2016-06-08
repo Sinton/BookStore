@@ -96,4 +96,25 @@ public class CategoryDao {
 		dbHelp.closeConn();
 		return categories;
 	}
+	
+	/**
+	 * 根据分类名获取二级分类ID
+	 * @param categoryName
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getCategoryIdByName(String categoryName) throws SQLException {
+		String sql = "SELECT second_category_id from t_second_category WHERE second_category_name = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, categoryName);
+		rs = pstmt.executeQuery();
+		int secondCategoryId = 0;
+		if (rs.next()) {
+			secondCategoryId = rs.getInt("second_category_id");
+		}
+		if (pstmt != null)
+			pstmt.close();
+		dbHelp.closeConn();
+		return secondCategoryId;
+	}
 }

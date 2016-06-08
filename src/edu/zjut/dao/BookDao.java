@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import edu.zjut.model.Book;
 import edu.zjut.utils.DBHelp;
+import edu.zjut.utils.Helper;
 
 public class BookDao {
 	
@@ -104,6 +105,30 @@ public class BookDao {
 			book.setName(rs.getString("name"));
 			book.setPrice(rs.getDouble("price"));
 			book.setPublishing(rs.getString("publishing"));
+			books.add(book);
+		}
+		return books;
+	}
+	
+	/**
+	 * 获取二级分类下的全部书籍
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Book> getBooksBySecondCategoryId (int categoryId) throws SQLException {
+		String sql = "select * from t_book where second_category_id = ?;";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, categoryId);
+		rs = pstmt.executeQuery();
+		ArrayList<Book> books = new ArrayList<Book>();
+		while (rs.next()) {
+			Book book = new Book();
+			book.setBid(rs.getInt("bid"));
+			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
+			book.setPrice(rs.getDouble("price"));
+			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
 			books.add(book);
 		}
 		return books;

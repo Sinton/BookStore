@@ -31,7 +31,7 @@
 	                <div id="${category.getDesc()}-item" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="${category.getDesc()}" aria-expanded="true">
 	                    <ul class="list-group">
 	                    	<c:forEach items="${category.getSecondCategories()}" var="secondCategory">
-	                    		<li class="list-group-item">${secondCategory.getSecondCategoryName()}</li>
+	                    		<li class="list-group-item"><a href="category.do?${secondCategory.getSecondCategoryName()}">${secondCategory.getSecondCategoryName()}</a></li>
 	                    	</c:forEach>
 	                    </ul>
 	                </div>
