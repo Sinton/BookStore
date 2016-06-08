@@ -21,7 +21,6 @@ public class Book {
 	private String imgUrlSmall;
 
 	public Book() {
-		
 	}
 	
 	public int getBid() {

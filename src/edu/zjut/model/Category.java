@@ -7,9 +7,14 @@ public class Category {
 	private String desc;
 
 	public Category() {
-		
 	}
 	
+	public Category(int categoryId, String name, String desc) {
+		setCategoryId(categoryId);
+		setName(name);
+		setDesc(desc);
+	}
+
 	public int getCategoryId() {
 		return categoryId;
 	}

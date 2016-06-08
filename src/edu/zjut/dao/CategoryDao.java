@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import edu.zjut.model.Category;
-import edu.zjut.model.CategorySecond;
 import edu.zjut.utils.DBHelp;
 
 public class CategoryDao {
@@ -39,15 +38,16 @@ public class CategoryDao {
 	}
 	
 	/**
-	 * 添加二级分类
-	 * @param categorySecond
+	 * 修改一级分类
+	 * @param category
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean addCategorySecond(CategorySecond categorySecond) throws SQLException {
-		String sql = "";
+	public boolean updateCategory(Category category) throws SQLException {
+		String sql = "update form `t_category` set `category_name` = ? where category_id = ?";
 		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, categorySecond.getSecondName());
+		pstmt.setString(1, category.getName());
+		pstmt.setInt(2, category.getCategoryId());
 		int result = pstmt.executeUpdate();
 		if (pstmt != null)
 			pstmt.close();
@@ -55,7 +55,41 @@ public class CategoryDao {
 		return result > 0 ? true : false;
 	}
 	
-	public ArrayList<CategorySecond> getAllCategorySecond(int categoryId) {
-		return null;
+	/**
+	 * 删除指定一级分类
+	 * @param category
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean delteCategory(int categoryId) throws SQLException {
+		String sql = "delete form `t_category` where category_id = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, categoryId);
+		int result = pstmt.executeUpdate();
+		if (pstmt != null)
+			pstmt.close();
+		dbHelp.closeConn();
+		return result > 0 ? true : false;
+	}
+	
+	/**
+	 * 获取全部一级分类
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Category> getAllCategories() throws SQLException {
+		String sql = "select * from t_category;";
+		pstmt = connection.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		ArrayList<Category> categories = new ArrayList<Category>();
+		while (rs.next()) {
+			Category category = new Category();
+			category.setCategoryId(rs.getInt("category_id"));
+			category.setName(rs.getString("category_name"));
+			category.setDesc(rs.getString("category_desc"));
+			categories.add(category);
+		}
+		dbHelp.closeConn();
+		return categories;
 	}
 }

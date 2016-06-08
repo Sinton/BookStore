@@ -141,7 +141,7 @@ public class UserDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean removeAllUsers(ArrayList<Integer> uids) throws SQLException {
+	public boolean deleteAllUsers(ArrayList<Integer> uids) throws SQLException {
 		boolean isAllFinish = false;
 		String sql = "delete from `t_user` where uid = ?";
 		for (int i = 0; i < uids.size(); i++) {
