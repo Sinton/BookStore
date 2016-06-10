@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.zjut.dao.AdminDao;
 import edu.zjut.model.Admin;
 
-@WebServlet(name="AdminLoginServlet",urlPatterns={"/admin/login.do"})
+@WebServlet(name = "AdminLoginServlet", urlPatterns = { "/admin/login.do" })
 public class AdminLoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

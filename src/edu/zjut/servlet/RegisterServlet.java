@@ -15,7 +15,7 @@ import edu.zjut.dao.UserDao;
 import edu.zjut.model.User;
 import edu.zjut.utils.Helper;
 
-@WebServlet(name="RegisterServlet",urlPatterns={"/register.do"})
+@WebServlet(name = "RegisterServlet", urlPatterns = { "/register.do" })
 public class RegisterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

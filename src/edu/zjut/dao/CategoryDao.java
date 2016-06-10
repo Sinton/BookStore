@@ -45,7 +45,7 @@ public class CategoryDao {
 	 * @throws SQLException
 	 */
 	public boolean updateCategory(Category category) throws SQLException {
-		String sql = "update form `t_category` set `category_name` = ? where category_id = ?";
+		String sql = "UPDATE FORM `t_category` SET `category_name` = ? WHERE category_id = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, category.getName());
 		pstmt.setInt(2, category.getCategoryId());
@@ -63,7 +63,7 @@ public class CategoryDao {
 	 * @throws SQLException
 	 */
 	public boolean delteCategory(int categoryId) throws SQLException {
-		String sql = "delete form `t_category` where category_id = ?";
+		String sql = "DELETE FORM `t_category` WHERE category_id = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, categoryId);
 		int result = pstmt.executeUpdate();
@@ -79,7 +79,7 @@ public class CategoryDao {
 	 * @throws SQLException
 	 */
 	public ArrayList<Category> getAllCategories() throws SQLException {
-		String sql = "select * from t_category;";
+		String sql = "SELECT * FROM t_category;";
 		pstmt = connection.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		ArrayList<Category> categories = new ArrayList<Category>();
@@ -104,7 +104,7 @@ public class CategoryDao {
 	 * @throws SQLException
 	 */
 	public int getCategoryIdByName(String categoryName) throws SQLException {
-		String sql = "SELECT second_category_id from t_second_category WHERE second_category_name = ?";
+		String sql = "SELECT second_category_id FROM t_second_category WHERE second_category_name = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, categoryName);
 		rs = pstmt.executeQuery();

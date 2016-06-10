@@ -26,19 +26,19 @@
                         <tr>
                             <th><label class="label label-success">出版社：</label></th>
                             <c:forEach items="${publishs}" var="publish">
-                            	<td align="left"><label class="control-label"><a href="#">${publish}</a></label></td>
+                            	<td align="left"><label class="control-label"><a href="category.do?search=publish&publish=${publish}">${publish}</a></label></td>
                             </c:forEach>
                         </tr>
                         <tr>
                             <th><label class="label label-success">价格：</label></th>
                             <c:forEach items="${priceRanges}" var="priceRange">
-                            	<td align="left"><label class="control-label"><a href="#">${priceRange}</a></label></td>
+                            	<td align="left"><label class="control-label"><a href="category.do?search=priceRange&priceRange=${priceRange}">${priceRange}</a></label></td>
                             </c:forEach>
                         </tr>
                         <tr>
                             <th><label class="label label-success">折扣：</label></th>
                             <c:forEach items="${discounts}" var="discount">
-                            	<td align="left"><label class="control-label"><a href="#">${discount}</a></label></td>
+                            	<td align="left"><label class="control-label"><a href="category.do?search=discount&discount=${discount}">${discount}</a></label></td>
                             </c:forEach>
                             <td align="left" colspan="2"></td>
                         </tr>

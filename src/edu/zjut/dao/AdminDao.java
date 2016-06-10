@@ -28,7 +28,7 @@ public class AdminDao {
 	 */
 	public Admin getAdmin(String email, String password) throws SQLException {
 		connection = dbHelp.getConn();
-		String sql = "select * from t_admin where name = ? and adminpwd = ?";
+		String sql = "SELECT * FROM t_admin WHERE name = ? AND adminpwd = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, email);
 		pstmt.setString(2, password);
