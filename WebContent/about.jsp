@@ -52,11 +52,11 @@
                             <hr>
                             <p>前　端：Bootstrap 框架进行布局设计</p>
                             <p>　　|---- 前台：Bootstrap 3</p>
-                            <p>　　|---- 后台：Bootstrap 自定义框架</p>
-                            <p>后　端：Java</p>
+                            <p>　　|---- 后台：Bootstrap 模版框架</p>
+                            <p>后　端：Java MVC模式架构</p>
                             <p>数据库：MySQL</p>
                             <p>开　源：已开源在Github上</p>
-                            <p>地　址：https://github.com/Sinton</p>
+                            <p>地　址：<a href="https://github.com/Sinton">https://github.com/Sinton</a></p>
                         </div>
                         <div class="page-number">- 1 -</div>
                     </div>
