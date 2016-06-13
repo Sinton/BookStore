@@ -98,23 +98,20 @@ public class CategoryDao {
 	}
 	
 	/**
-	 * 根据分类名获取二级分类ID
-	 * @param categoryName
+	 * 根据一级分类Id获取该分类名称
+	 * @param categoryId
 	 * @return
 	 * @throws SQLException
 	 */
-	public int getCategoryIdByName(String categoryName) throws SQLException {
-		String sql = "SELECT second_category_id FROM t_second_category WHERE second_category_name = ?";
+	public String getCategoryNameByCategoryId(int categoryId) throws SQLException {
+		String sql = "SELECT category_name FROM t_category WHERE category_id = ?";
 		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, categoryName);
+		pstmt.setInt(1, categoryId);
 		rs = pstmt.executeQuery();
-		int secondCategoryId = 0;
+		String categoryName = "";
 		if (rs.next()) {
-			secondCategoryId = rs.getInt("second_category_id");
+			categoryName = rs.getString("category_name");
 		}
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return secondCategoryId;
+		return categoryName;
 	}
 }

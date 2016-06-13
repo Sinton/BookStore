@@ -114,4 +114,38 @@ public class SecondCategoryDao {
 		}
 		return secondCategories;
 	}
+	
+	/**
+	 * 根据二级分类名获取二级分类ID
+	 * @param categoryName
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getCategoryIdByName(String categoryName) throws SQLException {
+		String sql = "SELECT category_id FROM t_second_category WHERE second_category_name = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, categoryName);
+		rs = pstmt.executeQuery();
+		int categoryId = 0;
+		if (rs.next()) {
+			categoryId = rs.getInt("category_id");
+		}
+		if (pstmt != null)
+			pstmt.close();
+		return categoryId;
+	}
+	
+	public int getSecondCategoryIdByName(String categoryName) throws SQLException {
+		String sql = "SELECT second_category_id FROM t_second_category WHERE second_category_name = ?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, categoryName);
+		rs = pstmt.executeQuery();
+		int secondCategoryId = 0;
+		if (rs.next()) {
+			secondCategoryId = rs.getInt("second_category_id");
+		}
+		if (pstmt != null)
+			pstmt.close();
+		return secondCategoryId;
+	}
 }

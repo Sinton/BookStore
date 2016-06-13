@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.zjut.dao.BookDao;
 import edu.zjut.dao.CategoryDao;
+import edu.zjut.dao.SecondCategoryDao;
 import edu.zjut.model.Book;
 
 @WebServlet(name = "CategoryServlet", urlPatterns = { "/category.do" })
@@ -22,9 +23,9 @@ public class CategoryServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoryName = request.getQueryString();
+		String secondCategoryName = request.getQueryString();
 		String search = request.getParameter("search") == null ? null : request.getParameter("search");
-		CategoryDao categoryDao = new CategoryDao();
+		SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
 		ArrayList<Book> books = new ArrayList<Book>();
 		BookDao bookDao = new BookDao();
 		if (search != null) {
@@ -54,16 +55,23 @@ public class CategoryServlet extends HttpServlet {
 				}
 				break;
 			default:
-				System.out.println(request.getQueryString());
 				break;
 			}
 		} else {
 			try {
-				int secondCategoryId = categoryDao.getCategoryIdByName(categoryName);
+				int secondCategoryId = secondCategoryDao.getSecondCategoryIdByName(secondCategoryName);
 				books = bookDao.getBooksBySecondCategoryId(secondCategoryId);
 			} catch (SQLException exception) {
 				exception.printStackTrace();
 			}
+		}
+		try {
+			int categoryId = secondCategoryDao.getCategoryIdByName(secondCategoryName);
+			CategoryDao categoryDao = new CategoryDao();
+			String categoryName = categoryDao.getCategoryNameByCategoryId(categoryId);
+			request.getSession().setAttribute("categoryName", categoryName);
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
 		request.getSession().setAttribute("books", books);
 		request.getSession().setAttribute("publishs", bookDao.getPublishs());

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <ol class="breadcrumb" style="margin-top: 10px;">
-                <li><a href="#">编程语言与程序设计</a></li>
+                <li><a href="#">${categoryName}</a></li>
                 <li><a href="#">Java</a></li>
             </ol>
         </div>
