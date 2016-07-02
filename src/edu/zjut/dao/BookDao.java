@@ -28,11 +28,13 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public boolean createBook (Book book) throws SQLException {
-		String sql = "INSERT INTO `t_book` ( name, price, publishing) VALUES(?, ?, ?);";
+		String sql = "INSERT INTO `t_book` (name, author, price, discount, publishing) VALUES(?, ?, ?, ?, ?);";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, book.getName());
-		pstmt.setDouble(2, book.getPrice());
-		pstmt.setString(3, book.getPublishing());
+		pstmt.setString(2, book.getAuthor());
+		pstmt.setDouble(3, book.getPrice());
+		pstmt.setDouble(4, book.getDiscount());
+		pstmt.setString(5, book.getPublishing());
 		int result = pstmt.executeUpdate();
 		return result > 0 ? true : false;
 	}
@@ -74,7 +76,7 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public ArrayList<Book> getBooks () throws SQLException {
-		String sql = "SELECT * FROM t_book;";
+		String sql = "SELECT t_book.*, t_category.category_name FROM t_book, t_category WHERE t_book.category_id = t_category.category_id;";
 		pstmt = connection.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		ArrayList<Book> books = new ArrayList<Book>();
@@ -82,8 +84,17 @@ public class BookDao {
 			Book book = new Book();
 			book.setBid(rs.getInt("bid"));
 			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
 		return books;
@@ -104,8 +115,18 @@ public class BookDao {
 		while (rs.next()) {
 			book.setBid(rs.getInt("bid"));
 			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 		}
 		return book;
 	}
