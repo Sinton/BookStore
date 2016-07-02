@@ -17,7 +17,7 @@
                     <li>
                     	<a href=""><i class="fa fa-home"></i><span>站点管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="{:U('Index/index')}">基本信息</a></li>
+                            <li><a href="">基本信息</a></li>
                             <li><a href="#">服务管理</a></li>
                         </ul>
                     </li>
@@ -38,18 +38,18 @@
                     <li>
                     	<a href=""><i class="fa fa-book"></i><span>书籍管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="{:U('Game/index')}">书籍管理</a></li>
-                            <li><a href="{:U('Game/category')}">书籍类别</a></li>
-                            <li><a href="{:U('Game/subject')}">专题管理</a></li>
+                            <li><a href="book.do">书籍管理</a></li>
+                            <li><a href="category.do">书籍类别</a></li>
                         </ul>
                     </li>
                     <li>
                     	<a href=""><i class="fa fa-file-text"></i><span>专题管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="{:U('Subject/index')}">专题管理</a></li>
+                            <li><a href="subject.do')}">专题管理</a></li>
                         </ul>
                     </li>
-                    <li> <a href=""><i class="fa fa-flask"></i><span>运营管理</span></a>
+                    <li>
+                    	<a href=""><i class="fa fa-flask"></i><span>运营管理</span></a>
                         <ul class="sub-menu">
                             <li><a href="#">运营管理</a></li>
                         </ul>

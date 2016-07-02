@@ -34,7 +34,7 @@
 <div class="md-modal colored-header danger md-effect-10" id="colored-danger">
 	<div class="md-content">
 		<div class="modal-header text-center">
-			<h3>确定要删除该条信息</h3>
+			<h3>确定要删除该条记录</h3>
 			<button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		</div>
 		<div class="modal-body">
