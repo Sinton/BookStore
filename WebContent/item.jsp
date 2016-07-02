@@ -26,13 +26,13 @@
                 </div>
                 <div class="col-sm-7">
                     <blockquote>
-                        <h4>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</h4>
-                        <small><label class="label label-success">周志明</label> 著</small>
+                        <h4>${book.getName()}</h4>
+                        <small><label class="label label-success">${book.getAuthor() }</label> 著</small>
                     </blockquote>
                     <div class="well">
-                        <div>现 价：<span style="color: #c9302c;font-size: 20px">¥68.10</span> [8.7折]</div>
+                        <div>现 价：<span style="color: #c9302c;font-size: 20px">¥${book.getDiscount() * (book.getPrice() / 10) }</span> [${book.getDiscount()}折]</div>
                         <div>　</div>
-                        <div>定 价：<s class="bg-danger">￥79.00</s></div>
+                        <div>定 价：<s class="bg-danger">￥${book.getPrice()}</s></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-5">
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="col-sm-7">
-                            <a href="cart.jsp" class="btn btn-danger"><i class="glyphicon glyphicon-shopping-cart"></i> 加入购物车</a>
+                            <a href="cart.do?bid=${book.getBid()}" class="btn btn-danger"><i class="glyphicon glyphicon-shopping-cart"></i> 加入购物车</a>
                         </div>
                     </div>
                     <br>
@@ -64,16 +64,13 @@
                 </div>
                 <div class="tab-pane fade active in" id="intro">
                     <div class="col-sm-12">　</div>
-                    <div class="col-sm-3">出版社： 机械工业出版社</div>
-                    <div class="col-sm-3">ISBN：9787111421900</div>
-                    <div class="col-sm-3">版次：2</div>
-                    <div class="col-sm-3">商品编码：11252778</div>
+                    <div class="col-sm-3">出版社： ${book.getPublishing()}</div>
+                    <div class="col-sm-3">ISBN：${book.getIsnb()}</div>
+                    <div class="col-sm-3">版次：${book.getEdition()}</div>
                     <div class="col-sm-3">包装：平装</div>
                     <div class="col-sm-3">开本：16</div>
-                    <div class="col-sm-3">开出版时间：2013-05-01</div>
-                    <div class="col-sm-3">用纸：胶版纸</div>
-                    <div class="col-sm-3">页数：452</div>
-                    <div class="col-sm-3">正文语种：中文</div>
+                    <div class="col-sm-3">开出版时间：${book.getPublishTime()}</div>
+                    <div class="col-sm-3">页数：${book.getPageNum()}</div>
                 </div>
             </div>
         </div>

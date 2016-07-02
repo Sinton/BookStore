@@ -32,22 +32,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        	<c:forEach var="i" begin="1" end="3">
+							<c:forEach items="${userCart}" var="item">
 	                            <tr>
 	                                <th align="left" style="line-height:80px;"><input type="checkbox"></th>
 	                                <td align="left">
 	                                    <img src="img/item_cart.jpg" alt="">
-	                                    <b>深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</b>
+	                                    <b>${item.value.getBook().getName()}</b>
 	                                </td>
-	                                <td align="left" style="line-height:80px;">68.10</td>
+	                                <td align="left" style="line-height:80px;">${item.value.getBook().getPrice() * (item.value.getBook().getDiscount() * 0.1)}</td>
 	                                <td align="left" style="line-height:80px;">
 	                                    <div class="btn-group">
 	                                        <a href="#" class="btn btn-default btn-xs disabled"><i class="glyphicon glyphicon-arrow-down"></i></a>
-	                                        <a href="#" class="btn btn-default btn-xs disabled">1</a>
+	                                        <a href="#" class="btn btn-default btn-xs disabled">${item.value.getAmount()}</a>
 	                                        <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-arrow-up"></i></a>
 	                                    </div>
 	                                </td>
-	                                <td align="left" style="line-height:80px;">68.10</td>
+	                                <td align="left" style="line-height:80px;">${item.value.getTotalPrice()}</td>
 	                                <td align="left" style="line-height:80px;"><a class="btn btn-danger btn-xs" href="#">删除</a></td>
 	                            </tr>
                             </c:forEach>
@@ -60,14 +60,14 @@
                             </div>
                             <div class="col-sm-5">
                                 <div class="col-sm-6">
-                                    已选择<b class="text-danger"> 3 </b>件商品
+                                    已选择<b class="text-danger"> ${totalAmount} </b>件商品
                                 </div>
                                 <div class="col-sm-6">
-                                    总价（不含运费）：<b class="text-danger">￥136.20</b>
+                                    总价（不含运费）：<b class="text-danger">￥${totalPrice}</b>
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-danger btn-lg btn-block">去结算</button>
+                                <a href="cart.do?action=settlement" type="submit" class="btn btn-danger btn-lg btn-block">去结算</a>
                             </div>
                         </div>
                     </div>

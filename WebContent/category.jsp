@@ -55,8 +55,8 @@
 	                    <a href="item.jsp"><img src="img/item.jpg" alt="..."></a>
 	                    <div class="caption">
 	                        <h4 style="color: #c9302c">¥${book.getPrice()}</h4>
-	                        <!-- <h6>已有评价 <label class="label label-info">9140个</label></h6> -->
-	                        <h5><a href="item.jsp">${book.getName()}</a></h5>
+	                        <h6>已有评价 <label class="label label-info">9140个</label></h6>
+	                        <h5><a href="item.do?bid=${book.getBid()}">${book.getName()}</a></h5>
 	                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
 	                        <a class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a><br>
 	                        <span>${book.getAuthor()}</span><br>
