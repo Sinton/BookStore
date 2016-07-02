@@ -1,26 +1,56 @@
 package edu.zjut.model;
 
-public class Book {
+import java.io.Serializable;
 
+public class Book implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private int bid;
 	private String name;
 	private String author;
 	private double price;
-	private double currPrice;
 	private double discount;
 	private String publishing;
 	private String publishTime;
 	private int edition;
 	private int pageNum;
-	private int wordNum;
+	private String isnb;
 	private String printTime;
-	private int booksize;
-	private String paper;
-	private Category category;
+	private int categoryId;
+	private int secondCategoryId;
 	private String imgUrlBig;
 	private String imgUrlSmall;
 
 	public Book() {
+	}
+	
+	public Book(int bid, String name, String author, double price,
+			double discount, String publishing, String publishTime,
+			int edition, int pageNum, String isnb, String printTime,
+			int categoryId, String imgUrlBig, String imgUrlSmall) {
+		this.bid = bid;
+		this.name = name;
+		this.author = author;
+		this.price = price;
+		this.discount = discount;
+		this.publishing = publishing;
+		this.publishTime = publishTime;
+		this.edition = edition;
+		this.pageNum = pageNum;
+		this.isnb = isnb;
+		this.printTime = printTime;
+		this.categoryId = categoryId;
+		this.imgUrlBig = imgUrlBig;
+		this.imgUrlSmall = imgUrlSmall;
+	}
+	
+	public Book(String name, String author, double price, double discount, String publishing) {
+		this.name = name;
+		this.author = author;
+		this.price = price;
+		this.discount = discount;
+		this.publishing = publishing;
 	}
 	
 	public int getBid() {
@@ -53,14 +83,6 @@ public class Book {
 
 	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public double getCurrPrice() {
-		return currPrice;
-	}
-
-	public void setCurrPrice(double currPrice) {
-		this.currPrice = currPrice;
 	}
 
 	public double getDiscount() {
@@ -102,13 +124,13 @@ public class Book {
 	public void setPageNum(int pageNum) {
 		this.pageNum = pageNum;
 	}
-
-	public int getWordNum() {
-		return wordNum;
+	
+	public String getIsnb() {
+		return isnb;
 	}
 
-	public void setWordNum(int wordNum) {
-		this.wordNum = wordNum;
+	public void setIsnb(String isnb) {
+		this.isnb = isnb;
 	}
 
 	public String getPrintTime() {
@@ -119,28 +141,20 @@ public class Book {
 		this.printTime = printTime;
 	}
 
-	public int getBooksize() {
-		return booksize;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setBooksize(int booksize) {
-		this.booksize = booksize;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
-
-	public String getPaper() {
-		return paper;
+	
+	public int getSecondCategoryId() {
+		return secondCategoryId;
 	}
-
-	public void setPaper(String paper) {
-		this.paper = paper;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
+	
+	public void setSecondCategoryId(int secondCategoryId) {
+		this.secondCategoryId = secondCategoryId;
 	}
 
 	public String getImgUrlBig() {

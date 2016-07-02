@@ -1,6 +1,10 @@
 package edu.zjut.model;
 
-public class SecondCategory {
+import java.io.Serializable;
+
+public class SecondCategory implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int secondCategoryId;
 	private String secondCategoryName;
