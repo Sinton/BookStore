@@ -26,7 +26,7 @@ public class SecondCategoryDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean addSecondCategory(SecondCategory categorySecond) throws SQLException {
+	public boolean createSecondCategory(SecondCategory categorySecond) throws SQLException {
 		String sql = "insert";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, categorySecond.getSecondCategoryName());
@@ -89,7 +89,6 @@ public class SecondCategoryDao {
 			secondCategory.setCategoryId(rs.getInt("category_id"));
 			secondCategories.add(secondCategory);
 		}
-		dbHelp.closeConn();
 		return secondCategories;
 	}
 	

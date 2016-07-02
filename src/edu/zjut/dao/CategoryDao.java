@@ -27,7 +27,7 @@ public class CategoryDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean addCategory(Category category) throws SQLException {
+	public boolean createCategory(Category category) throws SQLException {
 		String sql = "";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, category.getName());
@@ -62,7 +62,7 @@ public class CategoryDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean delteCategory(int categoryId) throws SQLException {
+	public boolean deleteCategory(int categoryId) throws SQLException {
 		String sql = "DELETE FORM `t_category` WHERE category_id = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, categoryId);
@@ -93,7 +93,6 @@ public class CategoryDao {
 			category.setSecondCategories(secondCategories);
 			categories.add(category);
 		}
-		dbHelp.closeConn();
 		return categories;
 	}
 	
