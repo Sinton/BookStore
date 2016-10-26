@@ -1,3 +1,5 @@
+<%@page import="edu.zjut.model.Book"%>
+<%@page import="edu.zjut.dao.BookDao"%>
 <%@page import="edu.zjut.model.SecondCategory"%>
 <%@page import="edu.zjut.model.Category"%>
 <%@page import="edu.zjut.dao.SecondCategoryDao"%>
@@ -52,7 +54,7 @@
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1><label class="label label-success">新书推荐:一</label></h1>
-                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p> </p>
                                 <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
                             </div>
                         </div>
@@ -62,7 +64,7 @@
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1><label class="label label-success">新书推荐:二</label></h1>
-                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p> </p>
                                 <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
                             </div>
                         </div>
@@ -72,7 +74,7 @@
                         <div class="container">
                             <div class="carousel-caption">
                                 <h1><label class="label label-success">新书推荐:三</label></h1>
-                                <p><code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code></p>
+                                <p> <%-- <code>内容: XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX XXXXX XXXXXXXXXX XXXXXXXXXXXXXX</code> --%></p>
                                 <p><a class="btn btn-lg btn-primary" href="#" role="button">点击查看</a></p>
                             </div>
                         </div>
@@ -87,50 +89,71 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
+            
+            <%
+            BookDao bookDao = new BookDao();
+            ArrayList<Book> randbooks_1 = bookDao.getRandBooks();
+            request.getSession().setAttribute("randbooks_1", randbooks_1);
+            %>
             <h3 class="page-header">1F 新书速递</h3>
             <div class="row">
-                <c:forEach var="i" begin="1" end="6">
-            		<div class="col-sm-3">
+                <c:forEach items="${randbooks_1}" var="randbook">
+	                <div class="col-sm-3">
 	                    <div class="thumbnail">
-	                        <a href="item.jsp"><img src="img/item.jpg" alt=""></a>
+	                    	<a href="item.do?bid=${randbook.getBid()}"><img src="upload/${randbook.getImgUrlMid()}" alt=""></a>
 	                        <div class="caption">
-	                            <h5><a href="item.jsp">深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</a></h5>
-	                            <p><label class="label label-danger">¥68.10</label></p>
+	                            <h5><a href="item.do?bid=${randbook.getBid()}">${randbook.getName()}</a></h5>
+	                            <p><label class="label label-danger">¥${randbook.getPrice()* randbook.getDiscount() * 0.1 }</label></p>
+	                            <span>${randbook.getAuthor()}</span><br>
+	                            <span>${randbook.getPublishing()}</span><br>
+	                            <span>${randbook.getPublishTime()}</span>
 	                        </div>
 	                    </div>
 	                </div>
-            	</c:forEach>
+	            </c:forEach>
             </div>
-
+            <%
+            ArrayList<Book> randbooks_2 = bookDao.getRandBooks();
+            request.getSession().setAttribute("randbooks_2", randbooks_2);
+            %>
             <h3 class="page-header">2F 丛书推荐</h3>
             <div class="row">
-                <c:forEach var="i" begin="1" end="8">
-            		<div class="col-sm-3">
+                <c:forEach items="${randbooks_2}" var="randbook">
+	                <div class="col-sm-3">
 	                    <div class="thumbnail">
-	                    	<a href="item.jsp"><img src="img/item.jpg" alt=""></a>
+	                    	<a href="item.do?bid=${randbook.getBid()}"><img src="upload/${randbook.getImgUrlMid()}" alt=""></a>
 	                        <div class="caption">
-	                            <h5><a href="item.jsp">深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</a></h5>
-	                            <p><label class="label label-danger">¥68.10</label></p>
+	                            <h5><a href="item.do?bid=${randbook.getBid()}">${randbook.getName()}</a></h5>
+	                            <p><label class="label label-danger">¥${randbook.getPrice()* randbook.getDiscount() * 0.1 }</label></p>
+	                            <span>${randbook.getAuthor()}</span><br>
+	                            <span>${randbook.getPublishing()}</span><br>
+	                            <span>${randbook.getPublishTime()}</span>
 	                        </div>
 	                    </div>
 	                </div>
-            	</c:forEach>
+	            </c:forEach>
             </div>
-
+            
+            <%
+            ArrayList<Book> randbooks_3 = bookDao.getRandBooks();
+            request.getSession().setAttribute("randbooks_3", randbooks_3);
+            %>
             <h3 class="page-header">3F 畅销经典</h3>
             <div class="row">
-            	<c:forEach var="i" begin="1" end="3">
-            		<div class="col-sm-3">
+            	<c:forEach items="${randbooks_3}" var="randbook">
+	                <div class="col-sm-3">
 	                    <div class="thumbnail">
-	                        <a href="item.jsp"><img src="img/item.jpg" alt=""></a>
+	                    	<a href="item.do?bid=${randbook.getBid()}"><img src="upload/${randbook.getImgUrlMid()}" alt=""></a>
 	                        <div class="caption">
-	                            <h5><a href="item.jsp">深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</a></h5>
-	                            <p><label class="label label-danger">¥68.10</label></p>
+	                            <h5><a href="item.do?bid=${randbook.getBid()}">${randbook.getName()}</a></h5>
+	                            <p><label class="label label-danger">¥${randbook.getPrice()* randbook.getDiscount() * 0.1 }</label></p>
+	                            <span>${randbook.getAuthor()}</span><br>
+	                            <span>${randbook.getPublishing()}</span><br>
+	                            <span>${randbook.getPublishTime()}</span>
 	                        </div>
 	                    </div>
 	                </div>
-            	</c:forEach>
+	            </c:forEach>
             </div>
         </div>
         <jsp:include page="public/footer.jsp" />

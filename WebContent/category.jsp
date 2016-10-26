@@ -15,7 +15,7 @@
                 <li><a href="#">Java</a></li>
             </ol>
         </div>
-        <div class="col-sm-12 col-md-12">
+        <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
             <div class="panel panel-success">
                 <div class="panel-heading">　</div>
                 <!-- <div class="panel-body">
@@ -52,13 +52,13 @@
         	<c:forEach items="${books}" var="book">
 	            <div class="col-sm-3">
 	                <div class="thumbnail">
-	                    <a href="item.jsp"><img src="img/item.jpg" alt="..."></a>
+	                    <a href="item.do?bid=${book.getBid()}"><img src="upload/${book.getImgUrlMid()}" alt="${book.getName()}"></a>
 	                    <div class="caption">
-	                        <h4 style="color: #c9302c">¥${book.getPrice()}</h4>
+	                        <h4 style="color: #c9302c">¥${book.getPrice() * book.getDiscount() * 0.1}</h4>
 	                        <h6>已有评价 <label class="label label-info">9140个</label></h6>
 	                        <h5><a href="item.do?bid=${book.getBid()}">${book.getName()}</a></h5>
 	                        <button class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-star-empty"></span>关注</button>
-	                        <a class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a><br>
+	                        <a href="cart.do?bid=${book.getBid()}" class="btn btn-default" style="color: #c9302c"><span class="glyphicon glyphicon-shopping-cart"></span> 加入购物车</a><br>
 	                        <span>${book.getAuthor()}</span><br>
 	                        <span>${book.getPublishing()}</span><br>
 	                        <span>${book.getPublishTime()}</span>
@@ -67,6 +67,7 @@
 	            </div>
             </c:forEach>
         </div>
+        <!-- 分页 -->
         <div class="col-sm-offset-4 col-sm-6">
             <ul class="pagination pagination-sm">
                 <li class="first disabled"><a href="#"><span class="glyphicon glyphicon-step-backward"></span>首页</a></li>

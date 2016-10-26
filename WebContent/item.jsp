@@ -9,19 +9,19 @@
 <div class="container">
     <div class="row">
         <!-- 面包屑导航 -->
-        <div class="col-sm-12 col-md-12">
+        <!-- <div class="col-sm-12 col-md-12">
             <ol class="breadcrumb" style="margin-top: 10px;">
                 <li><a href="#">编程语言与程序设计</a></li>
                 <li><a href="#">Java</a></li>
                 <li><a href="#">深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）</a></li>
             </ol>
-        </div>
+        </div> -->
         <!-- 书籍详细信息 -->
-        <div class="col-sm-12 col-md-12">
+        <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
             <div class="row">
                 <div class="col-sm-5">
                     <div class="thumbnail">
-                        <img src="img/item_detail.jpg" alt="...">
+                        <img src="upload/${book.getImgUrlBig()}" alt="...">
                     </div>
                 </div>
                 <div class="col-sm-7">
@@ -99,13 +99,13 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-12">
-            <h4 class="text-danger">正品行货</h4>
-            京东商城向您保证所售商品均为正品行货，京东自营商品开具机打发票或电子发票。
-            <h4 class="text-danger">全国联保</h4>
-            凭质保证书及京东商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由京东联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。京东商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！
-            <hr>
-            注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
-        </div>
+		    <h4 class="text-danger">正品行货</h4>
+		    工大 E 书城城向您保证所售商品均为正品行货，工大 E 书城商品开具机打发票或电子发票。
+		    <h4 class="text-danger">全国联保</h4>
+		    凭质保证书及工大 E 书城城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由工大 E 书城系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。工大 E 书城城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！
+		    <hr>
+		    注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+		</div>
         <jsp:include page="public/footer.jsp" />
     </div>
 </div>
