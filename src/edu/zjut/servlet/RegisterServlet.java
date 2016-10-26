@@ -30,6 +30,8 @@ public class RegisterServlet extends HttpServlet {
 		// 接收表单中的数据
 		String email = request.getParameter("email").trim().toString();
 		String password = request.getParameter("password").trim().toString();
+		String nickname = request.getParameter("nickname").trim().toString();
+		nickname = new String(nickname.getBytes("ISO-8859-1"), "UTF-8");
 		
 		// 判断用户名、密码是否为空
 		if (!"".equals(email) && !"".equals(password)) {
@@ -37,11 +39,11 @@ public class RegisterServlet extends HttpServlet {
 			if(validateEmail(email)) {
 				if (validatePassword(password)) {
 					// 注册新用户
-					User user = new User(email, password, new Helper().getCurrentTimeStamp());
+					long timeStamp = new Helper().getCurrentTimeStamp();
+					User user = new User(email, password, nickname, new Helper().timeStampToDate(timeStamp, Helper.TIME_SPECIFIC_HEIGH));
 					UserDao userDao = new UserDao();
 					try {
 						if (userDao.createUser(user)) {
-							request.getSession().setAttribute("user", user);
 							response.sendRedirect("login.jsp");
 						}else {
 							System.out.println("对不起！您申请注册的帐号不可用．");

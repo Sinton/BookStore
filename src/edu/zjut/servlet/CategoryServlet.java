@@ -24,6 +24,7 @@ public class CategoryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String secondCategoryName = request.getQueryString();
+		secondCategoryName = new String(secondCategoryName.getBytes("ISO-8859-1"), "UTF-8");
 		String search = request.getParameter("search") == null ? null : request.getParameter("search");
 		SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
 		ArrayList<Book> books = new ArrayList<Book>();

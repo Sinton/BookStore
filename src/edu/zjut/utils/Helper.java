@@ -2,6 +2,7 @@ package edu.zjut.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,6 +24,7 @@ public class Helper {
 	/**
 	 * 将时间戳转化成具体时间
 	 * @param timeStamp
+	 * @param specificLevel
 	 * @return
 	 */
 	public String timeStampToDate(long timeStamp, int specificLevel) {
@@ -43,6 +45,35 @@ public class Helper {
 		String time = timeFormat.format(new Date(timeStamp * 1000));
 		return time;
 	}
+	
+	/** 
+     * 日期格式字符串转换成时间戳 
+     * @param date
+     * @param specificLevel 
+     * @return 
+     */  
+    public String dateToTimeStamp(String date,int specificLevel){  
+		SimpleDateFormat timeFormat = null;
+		switch (specificLevel) {
+		case 1:
+			timeFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			break;
+		case 2:
+			timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+			break;
+		case 3:
+			timeFormat = new SimpleDateFormat("yyyy-MM");
+			break;
+		default:
+			break;
+		}
+		try {
+			return String.valueOf(timeFormat.parse(date).getTime() / 1000);
+		} catch (ParseException exception) {
+			exception.printStackTrace();
+		}
+		return null;
+    }
 
 	/**
 	 * 将字符串进行Hash加密
