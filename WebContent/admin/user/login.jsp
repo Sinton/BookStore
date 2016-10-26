@@ -45,8 +45,8 @@
 							</div>
 						</div>
 						<div class="foot">
-							<button class="btn btn-primary" type="submit">登录</button>
-							<a href="{:U('User')}" class="btn btn-warning">忘记密码</a>
+							<a href="../../admin/index.jsp" class="btn btn-primary" >登录</a>
+							<a href="#" class="btn btn-warning">忘记密码</a>
 						</div>
 					</form>
 				</div>

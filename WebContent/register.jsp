@@ -19,8 +19,16 @@
                         <form class="form-horizontal" action="register.do" method="post">
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">邮箱</label>
+                                
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="邮箱" required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nickname" class="col-sm-3 control-label">昵称</label>
+                                
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="昵称" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group">
