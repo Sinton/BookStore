@@ -19,20 +19,21 @@
 	                <li><a href="register.jsp">注册</a></li>
                 </c:if>
                 <c:if test="${!empty user}">
-					<li role="presentation" class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							${user.getEmail()}<span class="caret"></span>
-						</a>
+				<li role="presentation" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						${user.getEmail()}<span class="caret"></span>
+					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> 我的订单</a></li>
+						<li><a href="cart.jsp"><i class="glyphicon glyphicon-shopping-cart"></i> 我的购物车</a></li>
+						<li><a href="order.do"><i class="glyphicon glyphicon-bookmark"></i> 我的订单</a></li>
 						<li><a href="logout.do"><i class="glyphicon glyphicon-log-out"></i> 退出</a></li>
 					</ul>
-					</li>
+				</li>
 				</c:if>
                 <li><a href="about.jsp">关于</a></li>
             </ul>
-            <form class="navbar-form navbar-right" action="" method="get">
-                <input type="text" class="form-control" placeholder="搜索" name="search">
+            <form class="navbar-form navbar-right" action="search.do" method="post">
+                <input type="text" class="form-control" placeholder="搜索书籍" name="search">
             </form>
         </div>
     </div>

@@ -16,10 +16,10 @@ public class Book implements Serializable {
 	private int edition;
 	private int pageNum;
 	private String isnb;
-	private String printTime;
 	private int categoryId;
 	private int secondCategoryId;
 	private String imgUrlBig;
+	private String imgUrlMid;
 	private String imgUrlSmall;
 
 	public Book() {
@@ -27,30 +27,43 @@ public class Book implements Serializable {
 	
 	public Book(int bid, String name, String author, double price,
 			double discount, String publishing, String publishTime,
-			int edition, int pageNum, String isnb, String printTime,
-			int categoryId, String imgUrlBig, String imgUrlSmall) {
-		this.bid = bid;
-		this.name = name;
-		this.author = author;
-		this.price = price;
-		this.discount = discount;
-		this.publishing = publishing;
-		this.publishTime = publishTime;
-		this.edition = edition;
-		this.pageNum = pageNum;
-		this.isnb = isnb;
-		this.printTime = printTime;
-		this.categoryId = categoryId;
-		this.imgUrlBig = imgUrlBig;
-		this.imgUrlSmall = imgUrlSmall;
+			int edition, int pageNum, String isnb, int categoryId,
+			int secondCategoryId, String imgUrlBig, String imgUrlMid, String imgUrlSmall) {
+		setBid(bid);
+		setName(name);
+		setAuthor(author);
+		setPrice(price);
+		setDiscount(discount);
+		setPublishing(publishing);
+		setPublishTime(publishTime);
+		setEdition(edition);
+		setPageNum(pageNum);
+		setIsnb(isnb);
+		setCategoryId(categoryId);
+		setSecondCategoryId(secondCategoryId);
+		setImgUrlBig(imgUrlBig);
+		setImgUrlMid(imgUrlMid);
+		setImgUrlSmall(imgUrlSmall);
 	}
 	
-	public Book(String name, String author, double price, double discount, String publishing) {
-		this.name = name;
-		this.author = author;
-		this.price = price;
-		this.discount = discount;
-		this.publishing = publishing;
+	public Book(String name, String author, double price,
+			double discount, String publishing, String publishTime,
+			int edition, int pageNum, String isnb, int categoryId,
+			int secondCategoryId, String imgUrlBig, String imgUrlMid, String imgUrlSmall) {
+		setName(name);
+		setAuthor(author);
+		setPrice(price);
+		setDiscount(discount);
+		setPublishing(publishing);
+		setPublishTime(publishTime);
+		setEdition(edition);
+		setPageNum(pageNum);
+		setIsnb(isnb);
+		setCategoryId(categoryId);
+		setSecondCategoryId(secondCategoryId);
+		setImgUrlBig(imgUrlBig);
+		setImgUrlMid(imgUrlMid);
+		setImgUrlSmall(imgUrlSmall);
 	}
 	
 	public int getBid() {
@@ -133,14 +146,6 @@ public class Book implements Serializable {
 		this.isnb = isnb;
 	}
 
-	public String getPrintTime() {
-		return printTime;
-	}
-
-	public void setPrintTime(String printTime) {
-		this.printTime = printTime;
-	}
-
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -163,6 +168,14 @@ public class Book implements Serializable {
 
 	public void setImgUrlBig(String imgUrlBig) {
 		this.imgUrlBig = imgUrlBig;
+	}
+	
+	public String getImgUrlMid() {
+		return imgUrlMid;
+	}
+
+	public void setImgUrlMid(String imgUrlMid) {
+		this.imgUrlMid = imgUrlMid;
 	}
 
 	public String getImgUrlSmall() {

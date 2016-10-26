@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import edu.zjut.model.User;
 import edu.zjut.utils.DBHelp;
+import edu.zjut.utils.Helper;
 
 public class UserDao {
 
@@ -29,9 +30,9 @@ public class UserDao {
 		String sql = "insert into `t_user` (`email`, `nickname`, `password`, `register_date`, `status`, `token`) values (?, ?, ?, ?, ?, ?);";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, user.getEmail());
-		pstmt.setString(2, "");
+		pstmt.setString(2, user.getNickname());
 		pstmt.setString(3, user.getPassword());
-		pstmt.setLong(4, user.getRegisterDate());
+		pstmt.setLong(4, Long.parseLong(new Helper().dateToTimeStamp(user.getRegisterDate(), Helper.TIME_SPECIFIC_HEIGH)));
 		pstmt.setInt(5, 0);
 		pstmt.setString(6, "");
 		int result = pstmt.executeUpdate();
@@ -68,13 +69,12 @@ public class UserDao {
 	 * @throws SQLException
 	 */
 	public boolean deleteUser(int uid) throws SQLException {
-		String sql = "delete from where uid = ?";
+		String sql = "DELETE FROM t_user WHERE uid = ?";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setInt(1, uid);
 		int result = pstmt.executeUpdate();
 		if (pstmt != null)
 			pstmt.close();
-		dbHelp.closeConn();
 		return result > 0 ? true : false;
 	}
 	
@@ -93,8 +93,10 @@ public class UserDao {
 		while (rs.next()) {
 			user.setUid(rs.getInt("uid"));
 			user.setEmail(rs.getString("email"));
+			user.setNickname(rs.getString("nickname"));
 			user.setPassword(rs.getString("password"));
-			user.setRegisterDate(rs.getLong("register_date"));
+			user.setRegisterDate(new Helper().timeStampToDate(rs.getLong("register_date"), Helper.TIME_SPECIFIC_HEIGH));
+			user.setRegisterType(rs.getString("register_type"));
 		}
 		if (pstmt != null)
 			pstmt.close();
@@ -126,13 +128,22 @@ public class UserDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ResultSet getAllUsers() throws SQLException {
+	public ArrayList<User> getAllUsers() throws SQLException {
 		String sql = "select * from t_user";
-		rs = pstmt.executeQuery(sql);
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return rs;
+		pstmt = connection.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		ArrayList<User> users = new ArrayList<>();
+		while (rs.next()) {
+			User user = new User();
+			user.setUid(rs.getInt("uid"));
+			user.setEmail(rs.getString("email"));
+			user.setNickname(rs.getString("nickname"));
+			user.setPassword(rs.getString("password"));
+			user.setRegisterDate(new Helper().timeStampToDate(rs.getLong("register_date"), Helper.TIME_SPECIFIC_HEIGH));
+			user.setRegisterType(rs.getString("register_type"));
+			users.add(user);
+		}
+		return users;
 	}
 	
 	/**
@@ -154,7 +165,6 @@ public class UserDao {
 		}
 		if (pstmt != null)
 			pstmt.close();
-		dbHelp.closeConn();
 		return isAllFinish;
 	}
 }

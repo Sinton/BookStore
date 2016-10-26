@@ -28,13 +28,19 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public boolean createBook (Book book) throws SQLException {
-		String sql = "INSERT INTO `t_book` (name, author, price, discount, publishing) VALUES(?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO `t_book` (name, author, price, discount, publishing, publish_time, edition, page_num, isnb, category_id, second_category_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, book.getName());
 		pstmt.setString(2, book.getAuthor());
 		pstmt.setDouble(3, book.getPrice());
 		pstmt.setDouble(4, book.getDiscount());
 		pstmt.setString(5, book.getPublishing());
+		pstmt.setString(6, new Helper().dateToTimeStamp(book.getPublishTime(), Helper.TIME_SPECIFIC_LOW));
+		pstmt.setInt(7, book.getEdition());
+		pstmt.setInt(8, book.getPageNum());
+		pstmt.setString(9, book.getIsnb());
+		pstmt.setInt(10, book.getCategoryId());
+		pstmt.setInt(11, book.getSecondCategoryId());
 		int result = pstmt.executeUpdate();
 		return result > 0 ? true : false;
 	}
@@ -46,12 +52,20 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public boolean updateBook (Book book) throws SQLException {
-		String sql = "UPDATE `t_book` SET name = ?, price = ?, publishing = ? WHERE bid = ?;";
+		String sql = "UPDATE `t_book` SET name = ?, author = ?, price = ?, discount = ?, publishing = ?, publish_time = ?, edition = ?, page_num = ?, isnb = ?, category_id = ?, second_category_id = ? WHERE bid = ?;";
 		pstmt = connection.prepareStatement(sql);
 		pstmt.setString(1, book.getName());
-		pstmt.setDouble(2, book.getPrice());
-		pstmt.setString(3, book.getPublishing());
-		pstmt.setInt(4, book.getBid());
+		pstmt.setString(2, book.getAuthor());
+		pstmt.setDouble(3, book.getPrice());
+		pstmt.setDouble(4, book.getDiscount());
+		pstmt.setString(5, book.getPublishing());
+		pstmt.setString(6, new Helper().dateToTimeStamp(book.getPublishTime(), Helper.TIME_SPECIFIC_LOW));
+		pstmt.setInt(7, book.getEdition());
+		pstmt.setInt(8, book.getPageNum());
+		pstmt.setString(9, book.getIsnb());
+		pstmt.setInt(10, book.getCategoryId());
+		pstmt.setInt(11, book.getSecondCategoryId());
+		pstmt.setInt(12, book.getBid());
 		int result = pstmt.executeUpdate();
 		return result > 0 ? true : false;
 	}
@@ -76,7 +90,8 @@ public class BookDao {
 	 * @throws SQLException
 	 */
 	public ArrayList<Book> getBooks () throws SQLException {
-		String sql = "SELECT t_book.*, t_category.category_name FROM t_book, t_category WHERE t_book.category_id = t_category.category_id;";
+		//String sql = "SELECT t_book.*, t_category.category_name FROM t_book, t_category WHERE t_book.category_id = t_category.category_id;";
+		String sql = "SELECT * FROM t_book;";
 		pstmt = connection.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		ArrayList<Book> books = new ArrayList<Book>();
@@ -93,7 +108,9 @@ public class BookDao {
 			book.setPageNum(rs.getInt("page_num"));
 			book.setIsnb(rs.getString("isnb"));
 			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
 			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
 			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
@@ -126,6 +143,7 @@ public class BookDao {
 			book.setCategoryId(rs.getInt("category_id"));
 			book.setSecondCategoryId(rs.getInt("second_category_id"));
 			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
 			book.setImgUrlBig(rs.getString("img_url_big"));
 		}
 		return book;
@@ -155,8 +173,19 @@ public class BookDao {
 			Book book = new Book();
 			book.setBid(rs.getInt("bid"));
 			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
 		return books;
@@ -187,8 +216,19 @@ public class BookDao {
 			Book book = new Book();
 			book.setBid(rs.getInt("bid"));
 			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
 		return books;
@@ -219,8 +259,19 @@ public class BookDao {
 			Book book = new Book();
 			book.setBid(rs.getInt("bid"));
 			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
 		return books;
@@ -243,8 +294,82 @@ public class BookDao {
 			book.setName(rs.getString("name"));
 			book.setAuthor(rs.getString("author"));
 			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
 			book.setPublishing(rs.getString("publishing"));
 			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
+			books.add(book);
+		}
+		return books;
+	}
+	
+	/**
+	 * 模糊查询与该条件匹配的全部书籍
+	 * @param search
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Book> vagueSearch(String search) throws SQLException {
+		String sql = "SELECT * FROM t_book WHERE `name` LIKE '%" + search + "%';";
+		pstmt = connection.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		ArrayList<Book> books = new ArrayList<Book>();
+		while (rs.next()) {
+			Book book = new Book();
+			book.setBid(rs.getInt("bid"));
+			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
+			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
+			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
+			books.add(book);
+		}
+		return books;
+	}
+	
+	/**
+	 * 随机获取4本书籍
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<Book> getRandBooks() throws SQLException {
+		String sql = "SELECT * FROM t_book ORDER BY RAND() limit 4";
+		pstmt = connection.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		ArrayList<Book> books = new ArrayList<Book>();
+		while (rs.next()) {
+			Book book = new Book();
+			book.setBid(rs.getInt("bid"));
+			book.setName(rs.getString("name"));
+			book.setAuthor(rs.getString("author"));
+			book.setPrice(rs.getDouble("price"));
+			book.setDiscount(rs.getDouble("discount"));
+			book.setPublishing(rs.getString("publishing"));
+			book.setPublishTime(new Helper().timeStampToDate(rs.getLong("publish_time"), Helper.TIME_SPECIFIC_LOW));
+			book.setEdition(rs.getInt("edition"));
+			book.setPageNum(rs.getInt("page_num"));
+			book.setIsnb(rs.getString("isnb"));
+			book.setCategoryId(rs.getInt("category_id"));
+			book.setSecondCategoryId(rs.getInt("second_category_id"));
+			book.setImgUrlSmall(rs.getString("img_url_small"));
+			book.setImgUrlMid(rs.getString("img_url_mid"));
+			book.setImgUrlBig(rs.getString("img_url_big"));
 			books.add(book);
 		}
 		return books;
