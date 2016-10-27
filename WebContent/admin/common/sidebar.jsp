@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <ul class="cl-vnavigation">
-                    <li>
+                	<li>
                     	<a href=""><i class="fa fa-home"></i><span>站点管理</span></a>
                         <ul class="sub-menu">
                             <li><a href="">基本信息</a></li>
@@ -31,14 +31,15 @@
                     <li>
                     	<a href=""><i class="fa fa-users"></i><span>用户管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="{:U('User/user')}">用户列表<span class="label label-success pull-right">正在开发</span></a></li>
-                            <li><a href="{:U('User/admin')}">管理员列表<span class="label label-success pull-right">正在开发</span></a></li>
+                        	<li><a href="{:U('User/user')}">用户列表<span class="label label-success pull-right">正在开发</span></a></li>
+                        	<li><a href="{:U('User/admin')}">管理员列表<span class="label label-success pull-right">正在开发</span></a></li>
+                            <li><a href="user.do">用户列表</a></li>
                         </ul>
                     </li>
                     <li>
                     	<a href=""><i class="fa fa-book"></i><span>书籍管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="book.do">书籍管理</a></li>
+                        	<li><a href="book.do">书籍列表</a></li>
                             <li><a href="category.do">书籍类别</a></li>
                         </ul>
                     </li>
@@ -62,9 +63,11 @@
                     </li>
                     <li>
                     	<a href=""><i class="fa fa-bullhorn"></i><span>消息公告</span></a>
+                    	<a href=""><i class="fa fa-flask"></i><span>订单管理</span></a>
                         <ul class="sub-menu">
-                            <li><a href="#">公告列表</a></li>
-                            <li><a href="#">发布公告</a></li>
+                        	<li><a href="#">公告列表</a></li>
+                        	<li><a href="#">发布公告</a></li>
+                            <li><a href="order.do">订单列表</a></li>
                         </ul>
                     </li>
                 </ul>

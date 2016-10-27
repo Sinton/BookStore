@@ -1,30 +1,31 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>后台管理系统</title>
-    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' />
     <link rel="stylesheet" type="text/css" href='http://fonts.googleapis.com/css?family=Raleway:300,200,100' />
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="../js/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../js/jquery.gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="js/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery.gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4/css/font-awesome.min.css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="../js/jquery.nanoscroller/nanoscroller.css" />
-    <link rel="stylesheet" type="text/css" href="../js/jquery.easypiechart/jquery.easy-pie-chart.css" />
-    <link rel="stylesheet" type="text/css" href="../js/bootstrap.switch/bootstrap-switch.css" />
-    <link rel="stylesheet" type="text/css" href="../js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
-    <link rel="stylesheet" type="text/css" href="../js/jquery.select2/select2.css" />
-    <link rel="stylesheet" type="text/css" href="../js/bootstrap.slider/css/slider.css" />
-    <link rel="stylesheet" type="text/css" href="../js/jquery.icheck/skins/square/blue.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery.nanoscroller/nanoscroller.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery.easypiechart/jquery.easy-pie-chart.css" />
+    <link rel="stylesheet" type="text/css" href="js/bootstrap.switch/bootstrap-switch.css" />
+    <link rel="stylesheet" type="text/css" href="js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery.select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="js/bootstrap.slider/css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="js/jquery.icheck/skins/square/blue.css" />
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
 <body>
@@ -34,7 +35,6 @@
         <!-- Fixed silder -->
         <jsp:include page="../common/sidebar.jsp" />
         <div class="container-fluid" id="pcont">
-            <jsp:include page="../common/breadcrumb.jsp" />
             <div class="cl-mcont">
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
@@ -46,73 +46,30 @@
                                     </div>
                                 </div>
                                 <!-- <div class="row">
-                                	<form class="form" action="__SELF__" method="GET">
-                                	<table class="no-border">
-                                		<tbody class="no-border-y">
-	                                		<tr>
-	                                			<td class="text-center">
-	                                				<label class=" control-label">UID</label>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<input type="text" class="form-control" style="width: 100px;" placeholder="UID">
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<label class=" control-label">昵称</label>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<input type="text" class="form-control" placeholder="昵称">
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<label class=" control-label">注册类型</label>
-	                                			</td>
-	                                			<td class="text-center">
-												    <select class="form-control">
-												    	<foreach name="regtype" item="vo">
-													    	<option>{$vo}</option>
-												    	</foreach>
-												    </select>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<label class=" control-label">是否激活</label>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<select class="form-control">
-													    <option>已激活</option>
-													    <option>未激活</option>
-												    </select>
-	                                			</td>
-	                                		</tr>
-	                                		<tr>
-                                				<td class="text-center">
-                                					<label class=" control-label">注册时间</label>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<input class="form-control datetime" type="text" value="">
-	                                			</td>
-	                                			<td class="text-center">
-                                					<label class=" control-label">至</label>
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<input class="form-control datetime" type="text" value="">
-	                                			</td>
-	                                			<td class="text-center">
-	                                				<div class="btn-group">
-		                                				<button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i>搜索</button>
-		                                				<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-	                                                    	<span class="caret"></span>
-	                                                        <span class="sr-only"></span>
-	                                                    </button>
-	                                                    <ul class="dropdown-menu" role="menu">
-	                                                        <li><a href="#"><i class="fa fa-plus"></i>添加新用户</a></li>
-	                                                    </ul>
-	                                				</div>
-	                                			</td>
-	                                		</tr>
-	                                	</tbody>
-                                	</table>
+                                	<form class="form" action="admin/user.do?action=search" method="post">
+	                                	<div class="col-sm-6">
+		                                	<table class="no-border">
+		                                		<tbody class="no-border-y">
+			                                		<tr>
+			                                			<td class="text-center">
+			                                				<label class=" control-label">UID</label>
+			                                			</td>
+			                                			<td class="text-center">
+			                                				<input type="text" class="form-control" placeholder="UID">
+			                                			</td>
+			                                			<td class="text-center">
+			                                				<label class=" control-label">邮箱</label>
+			                                			</td>
+			                                			<td class="text-center">
+			                                				<input type="text" class="form-control" placeholder="邮箱">
+			                                			</td>
+			                                		</tr>
+			                                	</tbody>
+		                                	</table>
+	                                	</div>
                                 	</form>
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                             <div class="content">
                                 <table class="no-border">
                                     <thead class="no-border">
@@ -121,90 +78,29 @@
                                                 <input class="icheck" id="check-all" type="checkbox" name="checkall">
                                             </th>
                                             <th class="text-center" style="width:3%;"><strong>UID</strong></th>
-                                            <th class="text-center" style="width:10%;"><strong>用户昵称</strong></th>
-                                            <th class="text-center" style="width:10%;"><strong>用户头像</strong></th>
+                                            <th class="text-center" style="width:10%;"><strong>用户邮箱</strong></th>
+                                            <th class="text-center" style="width:10%;"><strong>用户密码</strong></th>
                                             <th class="text-center" style="width:10%;"><strong>注册类型</strong></th>
                                             <th class="text-center" style="width:10%;"><strong>注册时间</strong></th>
-                                            <th class="text-center" style="width:5%;"><strong>帐号激活</strong></th>
                                             <th class="text-center" style="width:10%;"><strong>操作</strong></th>
                                         </tr>
                                     </thead>
                                     <tbody class="no-border-y">
-                                    	<volist name="list" id="vo">
+                                    	<c:forEach items="${users}" var="user">
 	                                        <tr>
 	                                            <td><input type="checkbox" class="icheck"></td>
-	                                            <td class="text-center">{$vo.uid}</td>
-	                                            <td class="text-center">{$vo.nickname}</td>
-	                                            <td class="text-center"><img src="images/avatar1_50.jpg" alt="头像"></td>
-	                                            <td class="text-center">{$vo.register_type|getRegisterType=###}</td>
-	                                            <td class="text-center">{$vo.register_date|date="Y-m-d H:i:s",###}</td>
+	                                            <td class="text-center">${user.getUid()}</td>
+	                                            <td class="text-center">${user.getEmail()}</td>
+	                                            <td class="text-center">${user.getPassword()}</td>
+	                                            <td class="text-center">${user.getRegisterType()}</td>
+	                                            <td class="text-center">${user.getRegisterDate()}</td>
 	                                            <td class="text-center">
-	                                            	<eq name="vo.verify_status" value="0">
-		                                            	<span class="badge badge-defalut">未激活</span>
-	                                            	<else/>
-	                                            		<span class="badge badge-success">已激活</span>
-	                                            	</eq>
-	                                            </td>
-	                                            <td class="text-center">
-	                                                <div class="btn-group">
-	                                                    <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown">
-	                                                    	<i class="fa fa-pencil fa-lg"></i>编辑<span class="caret"></span>
-	                                                        <span class="sr-only"></span>
-	                                                    </button>
-	                                                    <ul class="dropdown-menu" role="menu">
-	                                                        <li><a href="{:U('User/profile', array ( 'uid' => $vo['uid'] ) )}"><i class="fa fa-eye"></i>查看用户个人资料</a></li>
-	                                                        <li class="divider"></li>
-	                                                        <li><a href="#"><i class="fa fa-pencil"></i>编辑用户信息</a></li>
-	                                                        <li><a href="#"><i class="fa fa-times"></i>删除该用户</a></li>
-	                                                    </ul>
-	                                                </div>
+	                                            	<a href="user.do?action=delete&uid=${user.getUid()}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>删除该用户</a>
 	                                            </td>
 	                                        </tr>
-	                                        <!-- <tr>
-	                                            <td>
-	                                                <input type="checkbox" class="icheck">
-	                                            </td>
-	                                            <td class="text-center">2</td>
-	                                            <td class="text-center">昵称好听有用么</td>
-	                                            <td class="text-center">
-	                                                <img src="images/avatar1_50.jpg" alt="头像">
-	                                            </td>
-	                                            <td class="text-center">管理员添加</td>
-	                                            <td class="text-center">05/14/2013</td>
-	                                            <td class="text-center"><span class="badge badge-default">未激活</span></td>
-	                                            <td class="text-center">
-	                                                <div class="btn-group">
-	                                                    <button type="button" class="btn btn-default btn-xs">Primary</button>
-	                                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-	                                                    	<span class="caret"></span>
-	                                                        <span class="sr-only"></span>
-	                                                    </button>
-	                                                    <ul class="dropdown-menu" role="menu">
-	                                                        <li><a href="#">修改</a>
-	                                                        </li>
-	                                                        <li><a href="#">删除</a>
-	                                                        </li>
-	                                                        <li class="divider"></li>
-	                                                        <li><a href="#">查看个人资料</a>
-	                                                        </li>
-	                                                    </ul>
-	                                                </div>
-	                                            </td>
-	                                        </tr> -->
-                                    	</volist>
+                                    	</c:forEach>
                                     </tbody>
                                 </table>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12">
-                                        <div class="pull-left">
-                                            <button type="button" class="btn btn-primary btn-sm">批量删除</button>
-                                            <button type="button" class="btn btn-primary btn-sm">全部导出</button>
-                                        </div>
-                                        <div class="pull-right">
-                                        	{$page}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -212,18 +108,18 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/jquery.nanoscroller/jquery.nanoscroller.js"></script>
-    <script type="text/javascript" src="../js/jquery.sparkline/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.easypiechart/jquery.easy-pie-chart.js"></script>
-    <script type="text/javascript" src="../js/behaviour/general.js"></script>
-    <script type="text/javascript" src="../js/jquery.ui/jquery-ui.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../js/jquery.nestable/jquery.nestable.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.switch/bootstrap-switch.min.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.select2/select2.min.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.slider/js/bootstrap-slider.js"></script>
-    <script type="text/javascript" src="../js/jquery.gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.nanoscroller/jquery.nanoscroller.js"></script>
+    <script type="text/javascript" src="js/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easypiechart/jquery.easy-pie-chart.js"></script>
+    <script type="text/javascript" src="js/behaviour/general.js"></script>
+    <script type="text/javascript" src="js/jquery.ui/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.nestable/jquery.nestable.js"></script>
+    <script type="text/javascript" src="js/bootstrap.switch/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/jquery.select2/select2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.slider/js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="js/jquery.gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             //initialize the javascript
@@ -240,12 +136,12 @@
     </script>
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="../js/behaviour/voice-commands.js"></script>
-    <script type="text/javascript" src="../js/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="../js/jquery.flot/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="../js/jquery.flot/jquery.flot.resize.js"></script>
-    <script type="text/javascript" src="../js/jquery.flot/jquery.flot.labels.js"></script>
-    <script type="text/javascript" src="../js/jquery.icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="js/behaviour/voice-commands.js"></script>
+    <script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/jquery.flot/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="js/jquery.flot/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="js/jquery.flot/jquery.flot.labels.js"></script>
+    <script type="text/javascript" src="js/jquery.icheck/icheck.min.js"></script>
 </body>
 </html>

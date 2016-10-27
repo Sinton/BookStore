@@ -33,10 +33,9 @@
 	    <!-- Fixed silder -->
 	    <jsp:include page="common/sidebar.jsp" />
         <div class="container-fluid" id="pcont">
-            <jsp:include page="common/breadcrumb.jsp" />
             <div class="cl-mcont">
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-12 col-md-12">
                         <div class="block-flat">
                             <div class="header">
                                 <h3>系统信息</h3>
@@ -46,15 +45,15 @@
                                     <tbody class="no-border-x no-border-y">
                                         <tr>
                                             <td style="width:30%;">管理系统版本</td>
-                                            <td>{$Think.const.IWANG_ADMIN_VERSION}</td>
+                                            <td>v_1.0</td>
                                         </tr>
                                         <tr>
                                             <td style="width:30%;">服务器操作系统</td>
-                                            <td>{$Think.const.PHP_OS}</td>
+                                            <td>WINNT</td>
                                         </tr>
                                         <tr>
                                             <td style="width:30%;">运行环境</td>
-                                            <td>{$_SERVER['SERVER_SOFTWARE']}</td>
+                                            <td>Tomcat</td>
                                         </tr>
                                         <tr>
                                             <td style="width:30%;">数据库版本</td>
@@ -100,6 +99,7 @@
                                         <tr>
                                             <td style="width:30%;">BUG反馈</td>
                                             <td><a href="http://www.iwang.com" target="_blank">iwang讨论区</a></td>
+                                            <td>MySQL 5.5</td>
                                         </tr>
                                     </tbody>
                                 </table>
