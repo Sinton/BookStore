@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.BookDao;
-import edu.zjut.dao.OrderDao;
-import edu.zjut.dao.OrderItemDao;
+import edu.zjut.dao.impl.BookDaoImpl;
+import edu.zjut.dao.impl.OrderDaoImpl;
+import edu.zjut.dao.impl.OrderItemDaoImpl;
 import edu.zjut.model.Book;
 import edu.zjut.model.ItemDetail;
 import edu.zjut.model.Order;
@@ -29,7 +29,7 @@ import edu.zjut.utils.Helper;
 @WebServlet(name = "CartServlet", urlPatterns = { "/cart.do" }, description = "购物车")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static BookDao bookDao = new BookDao();
+	private static BookDaoImpl bookDao = new BookDaoImpl();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
@@ -128,7 +128,7 @@ public class CartServlet extends HttpServlet {
 			totalPrice += itemDetail.getTotalPrice();
 			items.add(itemDetail);
 		}
-		OrderDao orderDao = new OrderDao();
+		OrderDaoImpl orderDao = new OrderDaoImpl();
 		String orderSeqPre = String.valueOf(Calendar.getInstance().get(Calendar.YEAR)) + String.valueOf(Calendar.getInstance().get(Calendar.MONTH + 1));
 		String orderSeq = (new Helper().getHash(System.currentTimeMillis() + "", "MD5")).substring(0, 8);
 		Order order = new Order(orderSeqPre + orderSeq, uid, new Date().getTime() / 1000, totalPrice, Order.NO_PAYMENT, "", null);
@@ -137,7 +137,7 @@ public class CartServlet extends HttpServlet {
 			// 结算成功之后清空购物车
 			request.getSession().setAttribute("userCart", null);
 			// 生成订单详情
-			OrderItemDao orderItemDao = new OrderItemDao();
+			OrderItemDaoImpl orderItemDao = new OrderItemDaoImpl();
 			for (int i = 0; i < items.size(); i++) {
 				OrderItem orderItem = new OrderItem(orderSeqPre + orderSeq, items.get(i).getBook().getBid(), items.get(i).getAmount());
 				orderItemDao.createOrderItem(orderItem);

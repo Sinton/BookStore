@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.BookDao;
-import edu.zjut.dao.CategoryDao;
-import edu.zjut.dao.SecondCategoryDao;
+import edu.zjut.dao.impl.BookDaoImpl;
+import edu.zjut.dao.impl.CategoryDaoImpl;
+import edu.zjut.dao.impl.SecondCategoryDaoImpl;
 import edu.zjut.model.Book;
 
 @WebServlet(name = "SearchServlet", urlPatterns = { "/search.do" })
@@ -25,9 +25,9 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String secondCategoryName = request.getQueryString();
 		String search = request.getParameter("search") == null ? null : request.getParameter("search");
-		SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
+		SecondCategoryDaoImpl secondCategoryDao = new SecondCategoryDaoImpl();
 		ArrayList<Book> books = new ArrayList<Book>();
-		BookDao bookDao = new BookDao();
+		BookDaoImpl bookDao = new BookDaoImpl();
 		if (search != null) {
 			switch (search) {
 			case "publish":
@@ -67,7 +67,7 @@ public class SearchServlet extends HttpServlet {
 		}
 		try {
 			int categoryId = secondCategoryDao.getCategoryIdByName(secondCategoryName);
-			CategoryDao categoryDao = new CategoryDao();
+			CategoryDaoImpl categoryDao = new CategoryDaoImpl();
 			String categoryName = categoryDao.getCategoryNameByCategoryId(categoryId);
 			request.getSession().setAttribute("categoryName", categoryName);
 		} catch (Exception exception) {
@@ -86,7 +86,7 @@ public class SearchServlet extends HttpServlet {
 		String search = request.getParameter("search");
 		search = new String(search.getBytes("ISO-8859-1"), "UTF-8");
 		ArrayList<Book> books = new ArrayList<Book>();
-		BookDao bookDao = new BookDao();
+		BookDaoImpl bookDao = new BookDaoImpl();
 		try {
 			books = bookDao.vagueSearch(search);
 		} catch (SQLException exception) {

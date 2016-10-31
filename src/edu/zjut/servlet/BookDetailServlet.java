@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.BookDao;
+import edu.zjut.dao.impl.BookDaoImpl;
 import edu.zjut.model.Book;
 
 @WebServlet(name = "BookDetailServlet", urlPatterns = { "/item.do" }, description = "书籍详情")
@@ -19,7 +19,7 @@ public class BookDetailServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int bid = Integer.parseInt(request.getParameter("bid"));
-		BookDao bookDao = new BookDao();
+		BookDaoImpl bookDao = new BookDaoImpl();
 		try {
 			Book book = bookDao.getBookByBid(bid);
 			request.setAttribute("book", book);

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.UserDao;
+import edu.zjut.dao.impl.UserDaoImpl;
 import edu.zjut.model.User;
 
 @WebServlet(name = "LoginServlet", urlPatterns = { "/login.do" })
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			if(validateEmail(email)) {
 				if (validatePassword(password)) {
 					// 注册新用户
-					UserDao userDao = new UserDao();
+					UserDaoImpl userDao = new UserDaoImpl();
 					try {
 						int uid = userDao.getUid(email);
 						User user = userDao.getUserByUid(uid);

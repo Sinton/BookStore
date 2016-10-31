@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.OrderDao;
+import edu.zjut.dao.impl.OrderDaoImpl;
 import edu.zjut.model.Order;
 import edu.zjut.model.User;
 
@@ -24,7 +24,7 @@ public class OrderServlet extends HttpServlet {
 		if (action == null) {
 			User user = (User) request.getSession().getAttribute("user");
 			int uid = user.getUid();
-			OrderDao orderDao = new OrderDao();
+			OrderDaoImpl orderDao = new OrderDaoImpl();
 			try {
 				ArrayList<Order> orders = orderDao.getOrdersByUid(uid);
 				request.getSession().setAttribute("orders", orders);
@@ -34,7 +34,7 @@ public class OrderServlet extends HttpServlet {
 				exception.printStackTrace();
 			}
 		} else {
-			OrderDao orderDao = new OrderDao();
+			OrderDaoImpl orderDao = new OrderDaoImpl();
 			String orderSeq = "";
 			switch (action) {
 			case "pay":

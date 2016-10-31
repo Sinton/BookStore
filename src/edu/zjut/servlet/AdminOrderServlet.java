@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.OrderDao;
-import edu.zjut.dao.OrderItemDao;
+import edu.zjut.dao.impl.OrderDaoImpl;
+import edu.zjut.dao.impl.OrderItemDaoImpl;
 import edu.zjut.model.Order;
 import edu.zjut.model.OrderItem;
 
@@ -20,7 +20,7 @@ import edu.zjut.model.OrderItem;
 public class AdminOrderServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static OrderDao orderDao = new OrderDao();
+	private static OrderDaoImpl orderDao = new OrderDaoImpl();
 	private static RequestDispatcher dispatcher;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +60,7 @@ public class AdminOrderServlet extends HttpServlet {
 	 */
 	protected void deliverAction(String orderSeq, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			OrderDao orderDao = new OrderDao();
+			OrderDaoImpl orderDao = new OrderDaoImpl();
 			orderDao.changeStatus(Order.Delivered, orderSeq);
 		} catch (SQLException exception) {
 			exception.printStackTrace();
@@ -114,8 +114,8 @@ public class AdminOrderServlet extends HttpServlet {
 	 * @throws IOException
 	 */
 	protected void showDetailAction(String orderSeq, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrderItemDao orderItemDao = new OrderItemDao();
-		OrderDao orderDao = new OrderDao();
+		OrderItemDaoImpl orderItemDao = new OrderItemDaoImpl();
+		OrderDaoImpl orderDao = new OrderDaoImpl();
 		try {
 			int status = orderDao.getStatus(orderSeq);
 			request.setAttribute("status", status);

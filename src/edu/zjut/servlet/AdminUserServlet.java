@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.UserDao;
+import edu.zjut.dao.impl.UserDaoImpl;
 import edu.zjut.model.User;
 
 @WebServlet(name = "AdminUserServlet",  urlPatterns = {"/admin/user.do"})
 public class AdminUserServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static UserDao userDao = new UserDao();
+	private static UserDaoImpl userDao = new UserDaoImpl();
 	private static RequestDispatcher dispatcher;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

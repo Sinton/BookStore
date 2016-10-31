@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.AdminDao;
+import edu.zjut.dao.impl.AdminDaoImpl;
 import edu.zjut.model.Admin;
 
 @WebServlet(name = "AdminLoginServlet", urlPatterns = { "/admin/login.do" })
@@ -29,7 +29,7 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email").trim().toString();
 		String password = request.getParameter("password").trim().toString();
-		AdminDao adminDao = new AdminDao();
+		AdminDaoImpl adminDao = new AdminDaoImpl();
 		try {
 			adminDao.getAdmin(email, password);
 		} catch (SQLException e) {

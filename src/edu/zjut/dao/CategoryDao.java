@@ -1,116 +1,14 @@
 package edu.zjut.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import edu.zjut.model.Category;
-import edu.zjut.model.SecondCategory;
-import edu.zjut.utils.DBHelp;
 
-public class CategoryDao {
-	
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
-	private Connection connection = null;
-	private DBHelp dbHelp = new DBHelp();
-	
-	public CategoryDao() {
-		connection = dbHelp.getConn();
-	}
-
-	/**
-	 * 添加一级分类
-	 * @param category
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean createCategory(Category category) throws SQLException {
-		String sql = "";
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, category.getName());
-		int result = pstmt.executeUpdate();
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return result > 0 ? true : false;
-	}
-	
-	/**
-	 * 修改一级分类
-	 * @param category
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean updateCategory(Category category) throws SQLException {
-		String sql = "UPDATE FORM `t_category` SET `category_name` = ? WHERE category_id = ?";
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setString(1, category.getName());
-		pstmt.setInt(2, category.getCategoryId());
-		int result = pstmt.executeUpdate();
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return result > 0 ? true : false;
-	}
-	
-	/**
-	 * 删除指定一级分类
-	 * @param category
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean deleteCategory(int categoryId) throws SQLException {
-		String sql = "DELETE FORM `t_category` WHERE category_id = ?";
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, categoryId);
-		int result = pstmt.executeUpdate();
-		if (pstmt != null)
-			pstmt.close();
-		dbHelp.closeConn();
-		return result > 0 ? true : false;
-	}
-	
-	/**
-	 * 获取全部一级分类
-	 * @return
-	 * @throws SQLException
-	 */
-	public ArrayList<Category> getAllCategories() throws SQLException {
-		String sql = "SELECT * FROM t_category;";
-		pstmt = connection.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		ArrayList<Category> categories = new ArrayList<Category>();
-		SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
-		while (rs.next()) {
-			Category category = new Category();
-			ArrayList<SecondCategory> secondCategories = secondCategoryDao.getSecondCategoriesByCategoryId(rs.getInt("category_id"));
-			category.setCategoryId(rs.getInt("category_id"));
-			category.setName(rs.getString("category_name"));
-			category.setDesc(rs.getString("category_desc"));
-			category.setSecondCategories(secondCategories);
-			categories.add(category);
-		}
-		return categories;
-	}
-	
-	/**
-	 * 根据一级分类Id获取该分类名称
-	 * @param categoryId
-	 * @return
-	 * @throws SQLException
-	 */
-	public String getCategoryNameByCategoryId(int categoryId) throws SQLException {
-		String sql = "SELECT category_name FROM t_category WHERE category_id = ?";
-		pstmt = connection.prepareStatement(sql);
-		pstmt.setInt(1, categoryId);
-		rs = pstmt.executeQuery();
-		String categoryName = "";
-		if (rs.next()) {
-			categoryName = rs.getString("category_name");
-		}
-		return categoryName;
-	}
+public interface CategoryDao {
+	boolean createCategory(Category category) throws SQLException;
+	boolean updateCategory(Category category) throws SQLException;
+	boolean deleteCategory(int categoryId) throws SQLException;
+	ArrayList<Category> getAllCategories() throws SQLException;
+	String getCategoryNameByCategoryId(int categoryId) throws SQLException;
 }

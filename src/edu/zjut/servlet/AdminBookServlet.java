@@ -18,9 +18,9 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import edu.zjut.dao.BookDao;
-import edu.zjut.dao.CategoryDao;
-import edu.zjut.dao.SecondCategoryDao;
+import edu.zjut.dao.impl.BookDaoImpl;
+import edu.zjut.dao.impl.CategoryDaoImpl;
+import edu.zjut.dao.impl.SecondCategoryDaoImpl;
 import edu.zjut.model.Book;
 import edu.zjut.model.Category;
 import edu.zjut.model.SecondCategory;
@@ -29,9 +29,9 @@ import edu.zjut.model.SecondCategory;
 public class AdminBookServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static BookDao bookDao = new BookDao();
-	private static CategoryDao categoryDao = new CategoryDao();
-	private static SecondCategoryDao secondCategoryDao = new SecondCategoryDao();
+	private static BookDaoImpl bookDao = new BookDaoImpl();
+	private static CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+	private static SecondCategoryDaoImpl secondCategoryDao = new SecondCategoryDaoImpl();
 	private static RequestDispatcher dispatcher;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.zjut.dao.UserDao;
+import edu.zjut.dao.impl.UserDaoImpl;
 import edu.zjut.model.User;
 import edu.zjut.utils.Helper;
 
@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 					// 注册新用户
 					long timeStamp = new Helper().getCurrentTimeStamp();
 					User user = new User(email, password, nickname, new Helper().timeStampToDate(timeStamp, Helper.TIME_SPECIFIC_HEIGH));
-					UserDao userDao = new UserDao();
+					UserDaoImpl userDao = new UserDaoImpl();
 					try {
 						if (userDao.createUser(user)) {
 							response.sendRedirect("login.jsp");
