@@ -1,5 +1,5 @@
 <%@page import="edu.zjut.model.Book"%>
-<%@page import="edu.zjut.dao.BookDao"%>
+<%@page import="edu.zjut.dao.impl.BookDaoImpl"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <%
-            BookDao bookDao = new BookDao();
+            BookDaoImpl bookDao = new BookDaoImpl();
             ArrayList<Book> randbooks = bookDao.getRandBooks();
             request.getSession().setAttribute("randbooks", randbooks);
             %>

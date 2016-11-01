@@ -1,9 +1,10 @@
 <%@page import="edu.zjut.model.Book"%>
-<%@page import="edu.zjut.dao.BookDao"%>
 <%@page import="edu.zjut.model.SecondCategory"%>
 <%@page import="edu.zjut.model.Category"%>
+<%@page import="edu.zjut.dao.impl.BookDaoImpl"%>
 <%@page import="edu.zjut.dao.SecondCategoryDao"%>
 <%@page import="edu.zjut.dao.CategoryDao"%>
+<%@page import="edu.zjut.dao.impl.CategoryDaoImpl"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -18,7 +19,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
         	<%
-        		CategoryDao categoryDao = new CategoryDao();
+        		CategoryDaoImpl categoryDao = new CategoryDaoImpl();
         		ArrayList<Category> categories = new ArrayList<Category>();
         		categories = categoryDao.getAllCategories();
         		request.getSession().setAttribute("categories", categories);
@@ -91,7 +92,7 @@
             </div>
             
             <%
-            BookDao bookDao = new BookDao();
+            BookDaoImpl bookDao = new BookDaoImpl();
             ArrayList<Book> randbooks_1 = bookDao.getRandBooks();
             request.getSession().setAttribute("randbooks_1", randbooks_1);
             %>
